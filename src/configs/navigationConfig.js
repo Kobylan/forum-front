@@ -55,8 +55,8 @@ const navigationConfig = [
     type: "item",
     icon: <Icon.CheckSquare size={20} />,
     permissions: ["admin", "editor"],
-    navLink: "/todo/:filter",
-    filterBase : "/todo/all"
+    navLink: "/forum/:filter",
+    filterBase : "/forum/all"
   },
   {
     id: "calendar",

@@ -93,7 +93,7 @@ class NavbarColors extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo" id="appTodo">
+                              <NavLink to="/app-forum" id="appTodo">
                                 <CheckSquare size={21} />
                               </NavLink>
                             </NavItem>
@@ -177,7 +177,7 @@ class NavbarColors extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo" id="appTodo">
+                              <NavLink to="/app-forum" id="appTodo">
                                 <CheckSquare size={21} />
                               </NavLink>
                             </NavItem>
@@ -261,7 +261,7 @@ class NavbarColors extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo" id="appTodo">
+                              <NavLink to="/app-forum" id="appTodo">
                                 <CheckSquare size={21} />
                               </NavLink>
                             </NavItem>
@@ -345,7 +345,7 @@ class NavbarColors extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo" id="appTodo">
+                              <NavLink to="/app-forum" id="appTodo">
                                 <CheckSquare size={21} />
                               </NavLink>
                             </NavItem>
@@ -429,7 +429,7 @@ class NavbarColors extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo" id="appTodo">
+                              <NavLink to="/app-forum" id="appTodo">
                                 <CheckSquare size={21} />
                               </NavLink>
                             </NavItem>
@@ -513,7 +513,7 @@ class NavbarColors extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo" id="appTodo">
+                              <NavLink to="/app-forum" id="appTodo">
                                 <CheckSquare size={21} />
                               </NavLink>
                             </NavItem>

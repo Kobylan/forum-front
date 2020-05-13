@@ -1,20 +1,15 @@
 import { combineReducers } from "redux"
-import calenderReducer from "./calendar/"
-import emailReducer from "./email/"
-import chatReducer from "./chat/"
-import todoReducer from "./todo/"
-import customizer from "./customizer/"
+import forumReducer from "./forum/"
+import commentsReducer from "./comments"
 import auth from "./auth/"
-import navbar from "./navbar/Index"
+import customizer from "./customizer/"
+
 
 const rootReducer = combineReducers({
-  calendar: calenderReducer,
-  emailApp: emailReducer,
-  todoApp: todoReducer,
-  chatApp: chatReducer,
-  customizer: customizer,
+  forumApp: forumReducer,
+  comments: commentsReducer,
   auth: auth,
-  navbar: navbar
+  customizer: customizer,
 })
 
 export default rootReducer

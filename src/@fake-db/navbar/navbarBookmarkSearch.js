@@ -21,7 +21,7 @@ export const searchResult = [
     id: 3,
     target: "Todo",
     title: "Todo",
-    link: "/todo/all",
+    link: "/forum/all",
     icon: "CheckSquare",
     starred: true
   },

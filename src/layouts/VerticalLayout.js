@@ -5,15 +5,7 @@ import Sidebar from "./components/menu/vertical-menu/Sidebar"
 import Navbar from "./components/navbar/Navbar"
 import Footer from "./components/footer/Footer"
 import { connect } from "react-redux"
-import {
-  changeMode,
-  collapseSidebar,
-  changeNavbarColor,
-  changeNavbarType,
-  changeFooterType,
-  changeMenuColor,
-  hideScrollToTop
-} from "../redux/actions/customizer/index"
+
 
 class VerticalLayout extends PureComponent {
   state = {
@@ -120,7 +112,7 @@ class VerticalLayout extends PureComponent {
 
     if (this.collapsedPaths.includes(pathname)) {
       this.handleRouteChange()
-    } 
+    }
   }
 
   handleRouteChange = () => {
@@ -258,7 +250,7 @@ class VerticalLayout extends PureComponent {
           "navbar-sticky": appProps.navbarType === "sticky",
           "navbar-floating": appProps.navbarType === "floating",
           "navbar-hidden": appProps.navbarType === "hidden",
-          "theme-primary": !menuThemeArr.includes(appProps.menuTheme)   
+          "theme-primary": !menuThemeArr.includes(appProps.menuTheme)
         })}
       >
         <Sidebar {...sidebarProps} />
@@ -289,12 +281,4 @@ const mapStateToProps = state => {
     app: state.customizer
   }
 }
-export default connect(mapStateToProps, {
-  changeMode,
-  collapseSidebar,
-  changeNavbarColor,
-  changeNavbarType,
-  changeFooterType,
-  changeMenuColor,
-  hideScrollToTop
-})(VerticalLayout)
+export default connect(mapStateToProps, null)(VerticalLayout)

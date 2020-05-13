@@ -121,7 +121,7 @@ let data = {
 }
 
 // GET: Fetch Todos
-mock.onGet("api/apps/todo").reply(request => {
+mock.onGet("api/apps/forum").reply(request => {
   const filter = request.params.filter
 
   const filteredTasks = data.tasks
@@ -148,7 +148,7 @@ mock.onGet("api/apps/todo").reply(request => {
 })
 
 // POST : Add new Tasks
-mock.onPost("/api/apps/todo/new-task").reply(request => {
+mock.onPost("/api/apps/forum/new-task").reply(request => {
   // Get task from post data
   let task = JSON.parse(request.data).task
 
@@ -166,7 +166,7 @@ mock.onPost("/api/apps/todo/new-task").reply(request => {
 
 
 // Trash Todo
-mock.onPost("/api/app/todo/trash-todo").reply(request => {
+mock.onPost("/api/app/forum/trash-forum").reply(request => {
   const todoId = request.data
   data.tasks = data.tasks.map(_todo => {
     if (_todo.id === todoId) {

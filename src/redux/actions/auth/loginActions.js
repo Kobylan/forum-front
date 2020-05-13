@@ -11,7 +11,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
 
-let firebaseAuth = firebase.auth()
+// let firebaseAuth = firebase.auth()
 
 // const initAuth0 = new auth0.WebAuth(configAuth)
 
@@ -68,6 +68,7 @@ export const submitLoginWithFireBase = (email, password, remember) => {
 }
 
 export const loginWithFB = () => {
+  let firebaseAuth = firebase.auth()
   return dispatch => {
     let provider = new firebase.auth.FacebookAuthProvider()
     provider.setCustomParameters({
@@ -97,6 +98,7 @@ export const loginWithFB = () => {
 }
 
 export const loginWithTwitter = () => {
+  let firebaseAuth = firebase.auth()
   return dispatch => {
     let provider = new firebase.auth.TwitterAuthProvider()
     firebaseAuth
@@ -125,6 +127,7 @@ export const loginWithTwitter = () => {
 }
 
 export const loginWithGoogle = () => {
+  let firebaseAuth = firebase.auth()
   return dispatch => {
     let provider = new firebase.auth.GoogleAuthProvider()
     firebaseAuth
@@ -154,6 +157,7 @@ export const loginWithGoogle = () => {
 }
 
 export const loginWithGithub = () => {
+  let firebaseAuth = firebase.auth()
   return dispatch => {
     let provider = new firebase.auth.GithubAuthProvider()
     firebaseAuth

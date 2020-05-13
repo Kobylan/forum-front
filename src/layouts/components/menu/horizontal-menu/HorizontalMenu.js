@@ -9,7 +9,6 @@ import classnames from "classnames"
 import { ChevronDown, ChevronRight } from "react-feather"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import { FormattedMessage } from "react-intl"
 import { history } from "../../../../history"
 import navigationConfig from "../../../../configs/horizontalMenuConfig"
 class HorizontalSidebar extends React.Component {
@@ -148,7 +147,7 @@ class HorizontalSidebar extends React.Component {
                     hover: this.state.itemHover === child.id,
                     "has-sub": child.children,
                     active:
-                      (child.parentOf && child.parentOf.includes(this.props.activePath) )|| 
+                      (child.parentOf && child.parentOf.includes(this.props.activePath) )||
                       (child.navLink && child.navLink === this.props.activePath),
                     "has-active-child": this.state.openDropdown.includes(
                       child.id
@@ -182,13 +181,8 @@ class HorizontalSidebar extends React.Component {
                         onClick={() => this.closeDropdown(child.id)}
                       >
                         <div className="dropdown-toggle-sub text-truncate">
-                          <span className="menu-icon align-bottom mr-1">
-                            {child.icon}
-                          </span>
-                          <FormattedMessage
-                            className="menu-title align-middle"
-                            id={child.title}
-                          />
+
+                            {child.title}
                         </div>
                         <ChevronRight
                           className="has-sub-arrow align-middle ml-50"
@@ -201,11 +195,9 @@ class HorizontalSidebar extends React.Component {
                     </Dropdown>
                   ) : (
                     <div className="item-content">
-                      <span className="menu-icon align-top mr-1">
-                        {child.icon}
-                      </span>
+
                       <span className="menu-title align-middle">
-                        <FormattedMessage id={child.title} />
+                        {child.title}
                       </span>
                     </div>
                   )}
@@ -275,10 +267,7 @@ class HorizontalSidebar extends React.Component {
                     {item.icon}
                   </span>
                   <span className="menu-title align-middle">
-                    <FormattedMessage
-                      className="menu-title align-middle"
-                      id={item.title}
-                    />
+                      {item.title}
                   </span>
                 </div>
                 <ChevronDown className="ml-50 align-bottom" size={15} />
@@ -300,18 +289,16 @@ class HorizontalSidebar extends React.Component {
               }
               href={ item.type === "external-link" ? item.navLink : undefined }
               target={item.newTab ? "_blank" : undefined}
-              > 
+              >
               <span className="menu-icon align-middle mr-75">
                 {item.icon}
               </span>
               <span className="menu-title align-middle">
-                <FormattedMessage
-                  className="menu-title align-middle"
-                  id={item.title}
-                />
+                {item.title}
+
                 </span>
             </CustomAnchorTag>)
-               
+
             }
           </div>
         </li>

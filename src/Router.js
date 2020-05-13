@@ -7,21 +7,17 @@ import Spinner from "./components/@vuexy/spinner/Loading-spinner"
 import knowledgeBaseCategory from "./views/pages/knowledge-base/Category"
 import knowledgeBaseQuestion from "./views/pages/knowledge-base/Questions"
 import { ContextLayout } from "./utility/context/Layout"
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 // Route-based code splitting
+//**----------------------------------------------------------------------------------------------------------------------------------------------------**//
+const Posts = lazy(() => import("./forum/Posts/Posts"))
+const Post = lazy(() => import("./forum/Posts/Post"))
+//**----------------------------------------------------------------------------------------------------------------------------------------------------**//
 const analyticsDashboard = lazy(() =>
   import("./views/dashboard/analytics/AnalyticsDashboard")
 )
-const ecommerceDashboard = lazy(() =>
-  import("./views/dashboard/ecommerce/EcommerceDashboard")
-)
-const email = lazy(() => import("./views/apps/email/Email"))
-const listing = lazy(() => import("./views/pages/listing/Listing"))
-const chat = lazy(() => import("./views/apps/chat/Chat"))
-const todo = lazy(() => import("./views/apps/todo/Todo"))
-const calendar = lazy(() => import("./views/apps/calendar/Calendar"))
-const shop = lazy(() => import("./views/apps/ecommerce/shop/Shop"))
-const wishlist = lazy(() => import("./views/apps/ecommerce/wishlist/Wishlist"))
+
 ///<Route path="" component={}/>
 //**-------------------------------------**//
 //**-------------------------------------**//
@@ -40,13 +36,9 @@ const test = lazy(() => import("./views/test/test"))
 //**-------------------------------------**//
 //**-------------------------------------**//
 //**-------------------------------------**//
-//**-------------------------------------**//
 ///<Route path="" component={}/>
 
-const checkout = lazy(() => import("./views/apps/ecommerce/cart/Cart"))
-const productDetail = lazy(() =>
-  import("./views/apps/ecommerce/detail/Detail")
-)
+
 const grid = lazy(() => import("./views/ui-elements/grid/Grid"))
 const typography = lazy(() =>
   import("./views/ui-elements/typography/Typography")
@@ -223,12 +215,7 @@ const RouteConfig = ({
       return (
         <ContextLayout.Consumer>
           {context => {
-            let LayoutTag =
-              fullLayout === true
-                ? context.fullLayout
-                : context.state.activeLayout === "horizontal"
-                ? context.horizontalLayout
-                : context.VerticalLayout
+            let LayoutTag = context.horizontalLayout
               return (
                 <LayoutTag {...props} permission={props.user}>
                   <Suspense fallback={<Spinner />}>
@@ -255,24 +242,14 @@ class AppRouter extends React.Component {
     return (
       // Set the directory path if you are deploying in sub-folder
       <Router history={history}>
-        <Switch>
-          <AppRoute
-            exact
-            path="/"
-          ><Redirect to="/dashboard/analytics" /></AppRoute>
-          <AppRoute
-            path="/dashboard/ecommerce"
-            component={ecommerceDashboard}
-          />
-                    <AppRoute path="/listing" exact component={listing} />
-          <AppRoute path="/email" exact component={() => <Redirect to="/email/inbox" />} />
-          <AppRoute path="/email/:filter" component={email} />
-          <AppRoute path="/chat" component={chat} />
-          <AppRoute path="/todo" exact component={() => <Redirect to="/todo/all" />} />
-          <AppRoute path="/todo/:filter" component={todo} />
-          <AppRoute path="/calendar" component={calendar} />
-          <AppRoute path="/ecommerce/shop" component={shop} />
-          <AppRoute path="/ecommerce/wishlist" component={wishlist} />
+
+          <Switch>
+{/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+          <AppRoute  path="/" exact component={Posts} />
+          <AppRoute  path="/post/:id" exact component={Post} />
+{/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+
+
           {/* our custom routes  */}
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
@@ -293,15 +270,8 @@ class AppRouter extends React.Component {
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
           {/* end */}
-          <AppRoute
-            path="/ecommerce/product-detail"
-            component={productDetail}
-          />
-          <AppRoute
-            path="/ecommerce/checkout"
-            component={checkout}
-            permission="admin"
-          />
+
+
           <AppRoute path="/ui-element/grid" component={grid} />
           <AppRoute path="/ui-element/typography" component={typography} />
           <AppRoute
@@ -446,6 +416,8 @@ class AppRouter extends React.Component {
           <AppRoute path="/extensions/tree" component={tree} />
           <AppRoute path="/extensions/pagination" component={reactPaginate} />
         </Switch>
+
+
       </Router>
     )
   }

@@ -14,10 +14,7 @@ import classnames from "classnames"
 import AutoComplete from "../../../components/@vuexy/autoComplete/AutoCompleteComponent"
 import { history } from "../../../history"
 import { connect } from "react-redux"
-import {
-  loadSuggestions,
-  updateStarred
-} from "../../../redux/actions/navbar/Index"
+
 
 class NavbarBookmarks extends React.PureComponent {
   state = {
@@ -272,6 +269,6 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { loadSuggestions, updateStarred })(
+export default connect(mapStateToProps, null)(
   NavbarBookmarks
 )

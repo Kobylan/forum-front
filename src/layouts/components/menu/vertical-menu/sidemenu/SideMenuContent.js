@@ -5,7 +5,6 @@ import navigationConfig from "../../../../../configs/navigationConfig"
 import SideMenuGroup from "./SideMenuGroup"
 import { Badge } from "reactstrap"
 import { ChevronRight } from "react-feather"
-import { FormattedMessage } from "react-intl"
 import { history } from "../../../../../history"
 
 class SideMenuContent extends React.Component {
@@ -187,7 +186,7 @@ class SideMenuContent extends React.Component {
           >
             <div className="menu-text">
               {item.icon}
-              <span className="menu-item menu-title"><FormattedMessage id={item.title} /></span>
+              <span className="menu-item menu-title">{item.title}</span>
             </div>
 
             {item.badge ? (
@@ -231,7 +230,7 @@ class SideMenuContent extends React.Component {
           )}
         </li>
       )
-      
+
       if (
         item.navLink &&
         item.collapsed !== undefined &&

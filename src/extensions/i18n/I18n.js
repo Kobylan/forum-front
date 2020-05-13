@@ -10,7 +10,6 @@ import {
 } from "reactstrap"
 import ExtensionsHeader from "../extensionsHeader"
 import Radio from "../../components/@vuexy/radio/RadioVuexy"
-import { IntlContext } from "../../utility/context/Internationalization"
 import { FormattedMessage } from "react-intl"
 class I18nExtension extends React.Component {
   render() {
@@ -21,7 +20,7 @@ class I18nExtension extends React.Component {
           subTitle="This library provides React components and an API to format dates, numbers, and strings, including pluralization and handling translations."
           link="https://www.npmjs.com/package/react-intl"
         />
-        <IntlContext.Consumer>
+        <div>
           {context => {
             return (
               <Row>
@@ -93,7 +92,7 @@ class I18nExtension extends React.Component {
               </Row>
             )
           }}
-        </IntlContext.Consumer>
+        </div>
       </React.Fragment>
     )
   }

@@ -111,7 +111,7 @@ class NavbarBasic extends React.Component {
                           </ul>
                           <ul className="nav navbar-nav bookmark-icons">
                             <NavItem className="nav-item d-none d-lg-block">
-                              <NavLink to="/app-todo">
+                              <NavLink to="/app-forum">
                                 <CheckSquare size={21} id="appTodoNav" />
                               </NavLink>
                               <UncontrolledTooltip

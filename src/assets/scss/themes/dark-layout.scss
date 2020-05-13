@@ -85,7 +85,7 @@ body {
         &::-webkit-scrollbar-thumb {
           background: $theme-dark-text-color;
         }
-    
+
         &::-webkit-scrollbar-track {
           background: $grid-dark-color
         }
@@ -118,7 +118,7 @@ body {
               svg{
                 stroke: $theme-dark-text-color;
               }
-              
+
             }
             &.nav-search {
               .search-input {
@@ -1265,7 +1265,7 @@ body {
         background-color: $content-dark-bg;
       }
     }
-    
+
     .flatpickr-calendar{
       &:not(.inline){
         &:after,
@@ -1310,7 +1310,7 @@ body {
         }
       }
       .flatpickr-weekdays,
-      .flatpickr-weekday{    
+      .flatpickr-weekday{
         color : $white;
       }
     }
@@ -2160,7 +2160,7 @@ body {
       }
     }
 
-    // todo-application
+    // forum-application
     .todo-application {
       border-color: $theme-dark-border-color;
 
@@ -2600,7 +2600,7 @@ body {
             }
             &.active {
               background-color: $dark-card-color !important;
-             
+
             }
             &:not(.active):hover {
               span {

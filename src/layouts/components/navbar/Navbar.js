@@ -72,16 +72,10 @@ const ThemeNavbar = props => {
               className="navbar-collapse d-flex justify-content-between align-items-center"
               id="navbar-mobile"
             >
-              <div className="bookmark-wrapper">
-                <NavbarBookmarks
-                  sidebarVisibility={props.sidebarVisibility}
-                  handleAppOverlay={props.handleAppOverlay}
-                />
-              </div>
               {props.horizontal ? (
                 <div className="logo d-flex align-items-center">
-                  <div className="brand-logo mr-50"></div>
-                  <h2 className="text-primary brand-text mb-0">Vuexy</h2>
+                  {/*<div className="brand-logo mr-50"></div>*/}
+                  <h2 className="text-primary brand-text mb-0">forum.alem</h2>
                 </div>
               ) : null}
               <NavbarUser
@@ -92,7 +86,7 @@ const ThemeNavbar = props => {
                   props.user.login.values !== undefined &&
                   props.user.login.values.loggedInWith !== "jwt" &&
                   props.user.login.values.photoUrl
-                    ? props.user.login.values.photoUrl 
+                    ? props.user.login.values.photoUrl
                     : user !== undefined && user.picture ? user.picture
                     : userImg
                 }
