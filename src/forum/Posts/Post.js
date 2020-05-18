@@ -1,29 +1,16 @@
 import React from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  Input,
-  Label,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import { connect } from "react-redux";
 import { getTopic, Reaction } from "../../redux/actions/forum/index";
 import TimeAgo from "react-timeago/lib";
 import "animate.css";
 import "../../assets/scss/pages/posts.scss";
-import { Heart, MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
+import { MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
 import { GetCategories } from "./GetCategories";
-import { Link } from "react-router-dom";
 import CommentList from "./Comments/CommentList";
-import Spinner from "reactstrap/es/Spinner";
 class Posts extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (props.app.forum.routeParam !== state.currentLocation) {
-      console.log(props);
       return {
         topic: props.app.forum.topic,
       };
@@ -40,16 +27,13 @@ class Posts extends React.Component {
     await this.props.getTopic(this.props.match.params.id);
     this.setState({
       topic: this.props.app.forum.topic,
-      text: this.props.app.forum.topic.content.split("\n").map((item, i) => {
-        return <p key={i}>{item}</p>;
-      }),
       parsed: true,
     });
   }
 
   render() {
-    const { topic, text } = this.state;
-    console.log("lololol", this.state.topic);
+    const { topic } = this.state;
+    console.log("lololol", topic);
     let renderTopic = this.state.parsed ? (
       <Card
         className={"animated fadeInUp faster col-sm-12 col-md-8 offset-md-2"}
@@ -59,7 +43,7 @@ class Posts extends React.Component {
             {topic.categories.length > 0 ? (
               <GetCategories categories={topic.categories} />
             ) : null}{" "}
-            Posted by {topic.author_nick}{" "}
+            Posted by {topic.author.nickname}{" "}
             <TimeAgo date={getTime(topic.creation_date)} />
           </small>
         </CardHeader>
@@ -67,7 +51,8 @@ class Posts extends React.Component {
           <CardTitle>{topic.title}</CardTitle>
         </CardHeader>
         <CardBody>
-          <p>{text}</p>
+          <td dangerouslySetInnerHTML={{ __html: topic.content }} />
+
           <div className="d-flex justify-content-start align-items-center mb-1">
             <div className="d-flex align-items-center">
               <div
@@ -77,6 +62,7 @@ class Posts extends React.Component {
                     author_id: 1,
                     type: 1,
                     post_id: topic.id,
+                    comment_id: 0,
                   })
                 }
               >
@@ -84,13 +70,14 @@ class Posts extends React.Component {
               </div>
               <div
                 className={"cursor-pointer"}
-                onClick={(e) =>
+                onClick={(e) => {
                   this.props.Reaction({
                     author_id: 1,
                     type: 0,
                     post_id: topic.id,
-                  })
-                }
+                    comment_id: 0,
+                  });
+                }}
               >
                 <ThumbsDown size={15} /> {topic.dislikes}
               </div>

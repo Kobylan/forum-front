@@ -1,10 +1,12 @@
 import axios from "axios"
 import {getTopic, getTopics} from "../forum";
 
+const API_URI = "http://localhost:8080"
+
 export const getComments = id => {
   return async dispatch => {
     await axios
-      .get("http://localhost:8080/api/comments?post_id="+id, {
+      .get(`${API_URI}/api/comments?post_id=${id}`, {
         params: id
       })
       .then(result => {
@@ -33,7 +35,7 @@ export const getComments = id => {
 export const addNewComment = comment => {
   return (dispatch, getState) => {
     const id = getState().comments.comments.routeParam
-    axios.post("http://localhost:8080/api/comment", comment).then(response => {
+    axios.post(`${API_URI}/api/comment`, comment).then(response => {
       dispatch({ type: "ADD_COMMENT", comment })
       dispatch(getComments(id))
       dispatch(getTopic(id))

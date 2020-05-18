@@ -1,22 +1,23 @@
-import React, { Suspense, lazy } from "react"
-import { Router, Switch, Route } from "react-router-dom"
-import { history } from "./history"
-import { connect } from "react-redux"
-import { Redirect } from "react-router-dom"
-import Spinner from "./components/@vuexy/spinner/Loading-spinner"
-import knowledgeBaseCategory from "./views/pages/knowledge-base/Category"
-import knowledgeBaseQuestion from "./views/pages/knowledge-base/Questions"
-import { ContextLayout } from "./utility/context/Layout"
-import {CSSTransition, TransitionGroup} from "react-transition-group";
+import React, { Suspense, lazy } from "react";
+import { Router, Switch, Route } from "react-router-dom";
+import { history } from "./history";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import Spinner from "./components/@vuexy/spinner/Loading-spinner";
+import knowledgeBaseCategory from "./views/pages/knowledge-base/Category";
+import knowledgeBaseQuestion from "./views/pages/knowledge-base/Questions";
+import { ContextLayout } from "./utility/context/Layout";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 // Route-based code splitting
 //**----------------------------------------------------------------------------------------------------------------------------------------------------**//
-const Posts = lazy(() => import("./forum/Posts/Posts"))
-const Post = lazy(() => import("./forum/Posts/Post"))
+const Posts = lazy(() => import("./forum/Posts/Posts"));
+const Post = lazy(() => import("./forum/Posts/Post"));
+const AddPost = lazy(() => import("./forum/Posts/AddPost"));
 //**----------------------------------------------------------------------------------------------------------------------------------------------------**//
 const analyticsDashboard = lazy(() =>
   import("./views/dashboard/analytics/AnalyticsDashboard")
-)
+);
 
 ///<Route path="" component={}/>
 //**-------------------------------------**//
@@ -25,12 +26,12 @@ const analyticsDashboard = lazy(() =>
 //**-------------------------------------**//
 //**-------------------------------------**//
 //**-------------------------------------**//
-const Homepage = lazy(() => import("./views/kobylan/Home"))
-const Explore = lazy(() => import("./views/kobylan/Explore"))
-const NewsFeed = lazy(() => import("./views/kobylan/NewsFeed"))
-const ContatcUs = lazy(() => import("./views/kobylan/ContactUs"))
-const Adduser = lazy(() => import("./views/test/AddUser"))
-const test = lazy(() => import("./views/test/test"))
+const Homepage = lazy(() => import("./views/kobylan/Home"));
+const Explore = lazy(() => import("./views/kobylan/Explore"));
+const NewsFeed = lazy(() => import("./views/kobylan/NewsFeed"));
+const ContatcUs = lazy(() => import("./views/kobylan/ContactUs"));
+const Adduser = lazy(() => import("./views/test/AddUser"));
+const test = lazy(() => import("./views/test/test"));
 //**-------------------------------------**//
 //**-------------------------------------**//
 //**-------------------------------------**//
@@ -38,169 +39,168 @@ const test = lazy(() => import("./views/test/test"))
 //**-------------------------------------**//
 ///<Route path="" component={}/>
 
-
-const grid = lazy(() => import("./views/ui-elements/grid/Grid"))
+const grid = lazy(() => import("./views/ui-elements/grid/Grid"));
 const typography = lazy(() =>
   import("./views/ui-elements/typography/Typography")
-)
+);
 const textutilities = lazy(() =>
   import("./views/ui-elements/text-utilities/TextUtilities")
-)
+);
 const syntaxhighlighter = lazy(() =>
   import("./views/ui-elements/syntax-highlighter/SyntaxHighlighter")
-)
-const colors = lazy(() => import("./views/ui-elements/colors/Colors"))
+);
+const colors = lazy(() => import("./views/ui-elements/colors/Colors"));
 const reactfeather = lazy(() =>
   import("./views/ui-elements/icons/FeatherIcons")
-)
-const basicCards = lazy(() => import("./views/ui-elements/cards/basic/Cards"))
+);
+const basicCards = lazy(() => import("./views/ui-elements/cards/basic/Cards"));
 const statisticsCards = lazy(() =>
   import("./views/ui-elements/cards/statistics/StatisticsCards")
-)
+);
 const analyticsCards = lazy(() =>
   import("./views/ui-elements/cards/analytics/Analytics")
-)
+);
 const actionCards = lazy(() =>
   import("./views/ui-elements/cards/actions/CardActions")
-)
-const Alerts = lazy(() => import("./components/reactstrap/alerts/Alerts"))
-const Buttons = lazy(() => import("./components/reactstrap/buttons/Buttons"))
+);
+const Alerts = lazy(() => import("./components/reactstrap/alerts/Alerts"));
+const Buttons = lazy(() => import("./components/reactstrap/buttons/Buttons"));
 const Breadcrumbs = lazy(() =>
   import("./components/reactstrap/breadcrumbs/Breadcrumbs")
-)
+);
 const Carousel = lazy(() =>
   import("./components/reactstrap/carousel/Carousel")
-)
+);
 const Collapse = lazy(() =>
   import("./components/reactstrap/collapse/Collapse")
-)
+);
 const Dropdowns = lazy(() =>
   import("./components/reactstrap/dropdowns/Dropdown")
-)
+);
 const ListGroup = lazy(() =>
   import("./components/reactstrap/listGroup/ListGroup")
-)
-const Modals = lazy(() => import("./components/reactstrap/modal/Modal"))
+);
+const Modals = lazy(() => import("./components/reactstrap/modal/Modal"));
 const Pagination = lazy(() =>
   import("./components/reactstrap/pagination/Pagination")
-)
+);
 const NavComponent = lazy(() =>
   import("./components/reactstrap/navComponent/NavComponent")
-)
-const Navbar = lazy(() => import("./components/reactstrap/navbar/Navbar"))
-const Tabs = lazy(() => import("./components/reactstrap/tabs/Tabs"))
+);
+const Navbar = lazy(() => import("./components/reactstrap/navbar/Navbar"));
+const Tabs = lazy(() => import("./components/reactstrap/tabs/Tabs"));
 const TabPills = lazy(() =>
   import("./components/reactstrap/tabPills/TabPills")
-)
+);
 const Tooltips = lazy(() =>
   import("./components/reactstrap/tooltips/Tooltips")
-)
+);
 const Popovers = lazy(() =>
   import("./components/reactstrap/popovers/Popovers")
-)
-const Badge = lazy(() => import("./components/reactstrap/badge/Badge"))
+);
+const Badge = lazy(() => import("./components/reactstrap/badge/Badge"));
 const BadgePill = lazy(() =>
   import("./components/reactstrap/badgePills/BadgePill")
-)
+);
 const Progress = lazy(() =>
   import("./components/reactstrap/progress/Progress")
-)
-const Media = lazy(() => import("./components/reactstrap/media/MediaObject"))
+);
+const Media = lazy(() => import("./components/reactstrap/media/MediaObject"));
 const Spinners = lazy(() =>
   import("./components/reactstrap/spinners/Spinners")
-)
-const Toasts = lazy(() => import("./components/reactstrap/toasts/Toasts"))
-const avatar = lazy(() => import("./components/@vuexy/avatar/Avatar"))
+);
+const Toasts = lazy(() => import("./components/reactstrap/toasts/Toasts"));
+const avatar = lazy(() => import("./components/@vuexy/avatar/Avatar"));
 const AutoComplete = lazy(() =>
   import("./components/@vuexy/autoComplete/AutoComplete")
-)
-const chips = lazy(() => import("./components/@vuexy/chips/Chips"))
-const divider = lazy(() => import("./components/@vuexy/divider/Divider"))
-const vuexyWizard = lazy(() => import("./components/@vuexy/wizard/Wizard"))
-const select = lazy(() => import("./views/forms/form-elements/select/Select"))
+);
+const chips = lazy(() => import("./components/@vuexy/chips/Chips"));
+const divider = lazy(() => import("./components/@vuexy/divider/Divider"));
+const vuexyWizard = lazy(() => import("./components/@vuexy/wizard/Wizard"));
+const select = lazy(() => import("./views/forms/form-elements/select/Select"));
 const switchComponent = lazy(() =>
   import("./views/forms/form-elements/switch/Switch")
-)
+);
 const checkbox = lazy(() =>
   import("./views/forms/form-elements/checkboxes/Checkboxes")
-)
-const radio = lazy(() => import("./views/forms/form-elements/radio/Radio"))
-const input = lazy(() => import("./views/forms/form-elements/input/Input"))
+);
+const radio = lazy(() => import("./views/forms/form-elements/radio/Radio"));
+const input = lazy(() => import("./views/forms/form-elements/input/Input"));
 const group = lazy(() =>
   import("./views/forms/form-elements/input-groups/InputGoups")
-)
+);
 const numberInput = lazy(() =>
   import("./views/forms/form-elements/number-input/NumberInput")
-)
+);
 const textarea = lazy(() =>
   import("./views/forms/form-elements/textarea/Textarea")
-)
+);
 const pickers = lazy(() =>
   import("./views/forms/form-elements/datepicker/Pickers")
-)
+);
 const inputMask = lazy(() =>
   import("./views/forms/form-elements/input-mask/InputMask")
-)
-const layout = lazy(() => import("./views/forms/form-layouts/FormLayouts"))
-const formik = lazy(() => import("./views/forms/formik/Formik"))
-const tables = lazy(() => import("./views/tables/reactstrap/Tables"))
+);
+const layout = lazy(() => import("./views/forms/form-layouts/FormLayouts"));
+const formik = lazy(() => import("./views/forms/formik/Formik"));
+const tables = lazy(() => import("./views/tables/reactstrap/Tables"));
 const ReactTables = lazy(() =>
   import("./views/tables/react-tables/ReactTables")
-)
-const Aggrid = lazy(() => import("./views/tables/aggrid/Aggrid"))
-const profile = lazy(() => import("./views/pages/profile/Profile"))
-const faq = lazy(() => import("./views/pages/faq/FAQ"))
+);
+const Aggrid = lazy(() => import("./views/tables/aggrid/Aggrid"));
+const profile = lazy(() => import("./views/pages/profile/Profile"));
+const faq = lazy(() => import("./views/pages/faq/FAQ"));
 const knowledgeBase = lazy(() =>
   import("./views/pages/knowledge-base/KnowledgeBase")
-)
-const search = lazy(() => import("./views/pages/search/Search"))
+);
+const search = lazy(() => import("./views/pages/search/Search"));
 const accountSettings = lazy(() =>
   import("./views/pages/account-settings/AccountSettings")
-)
-const invoice = lazy(() => import("./views/pages/invoice/Invoice"))
-const comingSoon = lazy(() => import("./views/pages/misc/ComingSoon"))
-const error404 = lazy(() => import("./views/pages/misc/error/404"))
-const error500 = lazy(() => import("./views/pages/misc/error/500"))
-const authorized = lazy(() => import("./views/pages/misc/NotAuthorized"))
-const maintenance = lazy(() => import("./views/pages/misc/Maintenance"))
-const apex = lazy(() => import("./views/charts/apex/ApexCharts"))
-const chartjs = lazy(() => import("./views/charts/chart-js/ChartJS"))
-const extreme = lazy(() => import("./views/charts/recharts/Recharts"))
-const leafletMaps = lazy(() => import("./views/maps/Maps"))
-const toastr = lazy(() => import("./extensions/toastify/Toastify"))
-const sweetAlert = lazy(() => import("./extensions/sweet-alert/SweetAlert"))
-const rcSlider = lazy(() => import("./extensions/rc-slider/Slider"))
-const uploader = lazy(() => import("./extensions/dropzone/Dropzone"))
-const editor = lazy(() => import("./extensions/editor/Editor"))
-const drop = lazy(() => import("./extensions/drag-and-drop/DragAndDrop"))
-const tour = lazy(() => import("./extensions/tour/Tour"))
+);
+const invoice = lazy(() => import("./views/pages/invoice/Invoice"));
+const comingSoon = lazy(() => import("./views/pages/misc/ComingSoon"));
+const error404 = lazy(() => import("./views/pages/misc/error/404"));
+const error500 = lazy(() => import("./views/pages/misc/error/500"));
+const authorized = lazy(() => import("./views/pages/misc/NotAuthorized"));
+const maintenance = lazy(() => import("./views/pages/misc/Maintenance"));
+const apex = lazy(() => import("./views/charts/apex/ApexCharts"));
+const chartjs = lazy(() => import("./views/charts/chart-js/ChartJS"));
+const extreme = lazy(() => import("./views/charts/recharts/Recharts"));
+const leafletMaps = lazy(() => import("./views/maps/Maps"));
+const toastr = lazy(() => import("./extensions/toastify/Toastify"));
+const sweetAlert = lazy(() => import("./extensions/sweet-alert/SweetAlert"));
+const rcSlider = lazy(() => import("./extensions/rc-slider/Slider"));
+const uploader = lazy(() => import("./extensions/dropzone/Dropzone"));
+const editor = lazy(() => import("./extensions/editor/Editor"));
+const drop = lazy(() => import("./extensions/drag-and-drop/DragAndDrop"));
+const tour = lazy(() => import("./extensions/tour/Tour"));
 const clipboard = lazy(() =>
   import("./extensions/copy-to-clipboard/CopyToClipboard")
-)
-const menu = lazy(() => import("./extensions/contexify/Contexify"))
-const swiper = lazy(() => import("./extensions/swiper/Swiper"))
-const i18n = lazy(() => import("./extensions/i18n/I18n"))
-const reactPaginate = lazy(() => import("./extensions/pagination/Pagination"))
-const tree = lazy(() => import("./extensions/treeview/TreeView"))
-const userList = lazy(() => import("./views/apps/user/list/List"))
-const userEdit = lazy(() => import("./views/apps/user/edit/Edit"))
-const userView = lazy(() => import("./views/apps/user/view/View"))
-const Login = lazy(() => import("./views/pages/authentication/login/Login"))
+);
+const menu = lazy(() => import("./extensions/contexify/Contexify"));
+const swiper = lazy(() => import("./extensions/swiper/Swiper"));
+const i18n = lazy(() => import("./extensions/i18n/I18n"));
+const reactPaginate = lazy(() => import("./extensions/pagination/Pagination"));
+const tree = lazy(() => import("./extensions/treeview/TreeView"));
+const userList = lazy(() => import("./views/apps/user/list/List"));
+const userEdit = lazy(() => import("./views/apps/user/edit/Edit"));
+const userView = lazy(() => import("./views/apps/user/view/View"));
+const Login = lazy(() => import("./views/pages/authentication/login/Login"));
 const forgotPassword = lazy(() =>
   import("./views/pages/authentication/ForgotPassword")
-)
+);
 const lockScreen = lazy(() =>
   import("./views/pages/authentication/LockScreen")
-)
+);
 const resetPassword = lazy(() =>
   import("./views/pages/authentication/ResetPassword")
-)
+);
 const register = lazy(() =>
   import("./views/pages/authentication/register/Register")
-)
+);
 const accessControl = lazy(() =>
   import("./extensions/access-control/AccessControl")
-)
+);
 // Set Layout and Component Using App Route
 const RouteConfig = ({
   component: Component,
@@ -211,52 +211,53 @@ const RouteConfig = ({
 }) => (
   <Route
     {...rest}
-    render={props => {
+    render={(props) => {
       return (
         <ContextLayout.Consumer>
-          {context => {
-            let LayoutTag = context.horizontalLayout
-              return (
-                <LayoutTag {...props} permission={props.user}>
-                  <Suspense fallback={<Spinner />}>
-                    <Component {...props} />
-                  </Suspense>
-                </LayoutTag>
-              )
+          {(context) => {
+            let LayoutTag = context.horizontalLayout;
+            return (
+              <LayoutTag {...props} permission={props.user}>
+                <Suspense fallback={<Spinner />}>
+                  <Component {...props} />
+                </Suspense>
+              </LayoutTag>
+            );
           }}
         </ContextLayout.Consumer>
-      )
+      );
     }}
   />
-)
-const mapStateToProps = state => {
+);
+const mapStateToProps = (state) => {
   return {
-    user: state.auth.login.userRole
-  }
-}
+    user: state.auth.login.userRole,
+  };
+};
 
-const AppRoute = connect(mapStateToProps)(RouteConfig)
+const AppRoute = connect(mapStateToProps)(RouteConfig);
 
 class AppRouter extends React.Component {
   render() {
     return (
       // Set the directory path if you are deploying in sub-folder
       <Router history={history}>
-
-          <Switch>
-{/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
-          <AppRoute  path="/" exact component={Posts} />
-          <AppRoute  path="/post/:id" exact component={Post} />
-{/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
-
-
+        <Switch>
+          {/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
+          <AppRoute path="/" exact component={Posts} />
+          <AppRoute path="/post/:id" exact component={Post} />
+          <AppRoute path="/add" exact component={AddPost} />
+          {/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
           {/* our custom routes  */}
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
-          <AppRoute path="/dashboard/analytics" component={analyticsDashboard}/>
+          <AppRoute
+            path="/dashboard/analytics"
+            component={analyticsDashboard}
+          />
           <AppRoute path="/home" component={Homepage} />
           <AppRoute path="/home" component={Homepage} />
           <AppRoute path="/explore" component={Explore} />
@@ -270,8 +271,6 @@ class AppRouter extends React.Component {
           {/*-------------------------------------*/}
           {/*-------------------------------------*/}
           {/* end */}
-
-
           <AppRoute path="/ui-element/grid" component={grid} />
           <AppRoute path="/ui-element/typography" component={typography} />
           <AppRoute
@@ -416,11 +415,9 @@ class AppRouter extends React.Component {
           <AppRoute path="/extensions/tree" component={tree} />
           <AppRoute path="/extensions/pagination" component={reactPaginate} />
         </Switch>
-
-
       </Router>
-    )
+    );
   }
 }
 
-export default AppRouter
+export default AppRouter;

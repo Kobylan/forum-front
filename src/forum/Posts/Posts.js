@@ -70,7 +70,7 @@ class Posts extends React.Component {
                   </Link>
                 </CardHeader>
                 <CardBody>
-                  <p>{topic.content}</p>
+                  <td dangerouslySetInnerHTML={{ __html: topic.content }} />
                 </CardBody>
               </div>
               <div className="views ">

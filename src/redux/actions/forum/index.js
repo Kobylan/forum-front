@@ -1,10 +1,12 @@
 import axios from "axios";
 import { history } from "../../../history";
+import { getComments } from "../comments";
 
+const API_URI = "http://localhost:8080";
 export const getTopics = (routeParams) => {
   return async (dispatch) => {
     await axios
-      .get("http://localhost:8080/api/posts", {
+      .get(`${API_URI}/api/posts`, {
         params: routeParams,
       })
       .then((result) => {
@@ -21,7 +23,7 @@ export const getTopics = (routeParams) => {
 export const getTopic = (id) => {
   return async (dispatch) => {
     await axios
-      .get("http://localhost:8080/api/post?id=" + id)
+      .get(`${API_URI}/api/post?id=${id}`)
       .then((result) => {
         console.log("result", result);
         dispatch({
@@ -34,102 +36,22 @@ export const getTopic = (id) => {
   };
 };
 
-export const completePost = (topic) => {
-  return (dispatch) => {
-    dispatch({ type: "COMPLETE_POST", id: topic.id, value: topic.isCompleted });
-  };
-};
-
-export const starPost = (topic) => {
-  return (dispatch) => {
-    Promise.all([
-      dispatch({ type: "STAR_POST", id: topic.id, value: topic.isStarred }),
-    ]);
-  };
-};
-
-export const importantPost = (topic) => {
-  return (dispatch) => {
-    Promise.all([
-      dispatch({
-        type: "IMPORTANT_POST",
-        id: topic.id,
-        value: topic.isImportant,
-      }),
-    ]);
-  };
-};
-
-export const trashPost = (id) => {
-  return (dispatch, getState) => {
-    const params = getState().topicApp.topic.routeParam;
-    axios
-      .post("/api/app/topic/trash-topic", id)
-      .then((response) => dispatch({ type: "TRASH_POST", id }))
-      .then(dispatch(getTopics(params)));
-  };
-};
-
-export const updateTopic = (topic) => {
-  const request = axios.post("/api/apps/topic/update-topic", topic);
-  return (dispatch, getState) => {
-    const params = getState().topicApp.topic.routeParam;
-    request.then((response) => {
-      Promise.all([
-        dispatch({
-          type: "UPDATE_TOPIC",
-          topics: response.data,
-        }),
-      ]).then(() => dispatch(getTopics(params)));
-    });
-  };
-};
-
-export const updatePost = (id, title, desc) => {
-  return (dispatch) => {
-    dispatch({ type: "UPDATE_POST", id, title, desc });
-  };
-};
-
-export const updateLabel = (id, label) => {
-  return (dispatch, getState) => {
-    dispatch({ type: "UPDATE_LABEL", label, id });
-  };
-};
-
 export const addNewPost = (post) => {
-  return (dispatch, getState) => {
-    const params = getState().topicApp.topic.routeParam;
-    axios.post("/api/apps/topic/new-post", { post }).then((response) => {
+  return (dispatch) => {
+    axios.post(`${API_URI}/api/posts`, post).then((response) => {
       dispatch({ type: "ADD_POST", post });
-      dispatch(getTopics(params));
     });
   };
 };
 
-export const Reaction = (reaction) => {
+export const Reaction = (reaction, id) => {
   return (dispatch) => {
-    axios
-      .post("http://localhost:8080/api/reaction", reaction)
-      .then((response) => {
+    axios.post(`${API_URI}/api/reaction`, reaction).then((response) => {
+      if (reaction.post_id !== 0) {
         dispatch(getTopic(reaction.post_id));
-      });
-  };
-};
-
-export const searchPost = (val) => {
-  return (dispatch) => {
-    dispatch({
-      type: "SEARCH_POST",
-      val,
+      } else {
+        dispatch(getComments(id));
+      }
     });
-  };
-};
-
-export const changeFilter = (filter) => {
-  return (dispatch) => {
-    dispatch({ type: "CHANGE_FILTER", filter });
-    history.push(`/topic/${filter}`);
-    dispatch(getTopics({ filter }));
   };
 };

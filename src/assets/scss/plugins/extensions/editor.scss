@@ -10,4 +10,27 @@
     margin-bottom: 6px;
     cursor: pointer;
   }
+  .rdw-option-wrapper{
+    padding: 5px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    min-width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+  }
+  .rdw-option-active{
+    box-shadow: none;
+    border:1px solid #5f4aeb;
+  }
+  .rdw-block-dropdown {
+    width: 123px;
+  }
+  .rdw-option-wrapper:hover {
+    box-shadow: none;
+  }
 }
+

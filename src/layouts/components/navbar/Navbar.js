@@ -30,7 +30,7 @@ const UserName = props => {
   return username
 }
 const ThemeNavbar = props => {
-  const { user } = useAuth0()
+  // const { user } = useAuth0()
   const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
   const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]
   return (
@@ -78,27 +78,27 @@ const ThemeNavbar = props => {
                   <h2 className="text-primary brand-text mb-0">forum.alem</h2>
                 </div>
               ) : null}
-              <NavbarUser
-                handleAppOverlay={props.handleAppOverlay}
-                changeCurrentLang={props.changeCurrentLang}
-                userName={<UserName userdata={user} {...props} />}
-                userImg={
-                  props.user.login.values !== undefined &&
-                  props.user.login.values.loggedInWith !== "jwt" &&
-                  props.user.login.values.photoUrl
-                    ? props.user.login.values.photoUrl
-                    : user !== undefined && user.picture ? user.picture
-                    : userImg
-                }
-                loggedInWith={
-                  props.user !== undefined &&
-                  props.user.login.values !== undefined
-                    ? props.user.login.values.loggedInWith
-                    : null
-                }
-                logoutWithJWT={props.logoutWithJWT}
-                logoutWithFirebase={props.logoutWithFirebase}
-              />
+              {/*<NavbarUser*/}
+              {/*  handleAppOverlay={props.handleAppOverlay}*/}
+              {/*  changeCurrentLang={props.changeCurrentLang}*/}
+              {/*  userName={<UserName userdata={user} {...props} />}*/}
+              {/*  userImg={*/}
+              {/*    props.user.login.values !== undefined &&*/}
+              {/*    props.user.login.values.loggedInWith !== "jwt" &&*/}
+              {/*    props.user.login.values.photoUrl*/}
+              {/*      ? props.user.login.values.photoUrl*/}
+              {/*      : user !== undefined && user.picture ? user.picture*/}
+              {/*      : userImg*/}
+              {/*  }*/}
+              {/*  loggedInWith={*/}
+              {/*    props.user !== undefined &&*/}
+              {/*    props.user.login.values !== undefined*/}
+              {/*      ? props.user.login.values.loggedInWith*/}
+              {/*      : null*/}
+              {/*  }*/}
+              {/*  logoutWithJWT={props.logoutWithJWT}*/}
+              {/*  logoutWithFirebase={props.logoutWithFirebase}*/}
+              {/*/>*/}
             </div>
           </div>
         </div>
