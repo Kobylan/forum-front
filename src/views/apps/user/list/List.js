@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Card,
   CardBody,
@@ -15,11 +15,11 @@ import {
   DropdownItem,
   DropdownToggle,
   Collapse,
-  Spinner
-} from "reactstrap"
-import axios from "axios"
-import { ContextLayout } from "../../../../utility/context/Layout"
-import { AgGridReact } from "ag-grid-react"
+  Spinner,
+} from "reactstrap";
+import axios from "axios";
+import { ContextLayout } from "../../../../utility/context/Layout";
+import { AgGridReact } from "ag-grid-react";
 import {
   Edit,
   Trash2,
@@ -28,12 +28,12 @@ import {
   Printer,
   Download,
   RotateCw,
-  X
-} from "react-feather"
-import classnames from "classnames"
-import { history } from "../../../../history"
-import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss"
-import "../../../../assets/scss/pages/users.scss"
+  X,
+} from "react-feather";
+import classnames from "classnames";
+import { history } from "../../../../history";
+import "../../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
+import "../../../../assets/scss/pages/users.scss";
 class UsersList extends React.Component {
   state = {
     rowData: null,
@@ -47,7 +47,7 @@ class UsersList extends React.Component {
     verified: "All",
     department: "All",
     defaultColDef: {
-      sortable: true
+      sortable: true,
     },
     searchVal: "",
     columnDefs: [
@@ -58,14 +58,14 @@ class UsersList extends React.Component {
         filter: true,
         checkboxSelection: true,
         headerCheckboxSelectionFilteredOnly: true,
-        headerCheckboxSelection: true
+        headerCheckboxSelection: true,
       },
       {
         headerName: "Username",
         field: "username",
         filter: true,
         width: 250,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div
               className="d-flex align-items-center cursor-pointer"
@@ -80,39 +80,39 @@ class UsersList extends React.Component {
               />
               <span>{params.data.name}</span>
             </div>
-          )
-        }
+          );
+        },
       },
       {
         headerName: "Email",
         field: "email",
         filter: true,
-        width: 250
+        width: 250,
       },
       {
         headerName: "Name",
         field: "name",
         filter: true,
-        width: 200
+        width: 200,
       },
       {
         headerName: "Country",
         field: "country",
         filter: true,
-        width: 200
+        width: 200,
       },
       {
         headerName: "Role",
         field: "role",
         filter: true,
-        width: 150
+        width: 150,
       },
       {
         headerName: "Status",
         field: "status",
         filter: true,
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return params.value === "active" ? (
             <div className="badge badge-pill badge-light-success">
               {params.value}
@@ -125,33 +125,33 @@ class UsersList extends React.Component {
             <div className="badge badge-pill badge-light-warning">
               {params.value}
             </div>
-          ) : null
-        }
+          ) : null;
+        },
       },
       {
         headerName: "Verified",
         field: "is_verified",
         filter: true,
         width: 125,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return params.value === true ? (
             <div className="bullet bullet-sm bullet-primary"></div>
           ) : params.value === false ? (
             <div className="bullet bullet-sm bullet-secondary"></div>
-          ) : null
-        }
+          ) : null;
+        },
       },
       {
         headerName: "Department",
         field: "department",
         filter: true,
-        width: 160
+        width: 160,
       },
       {
         headerName: "Actions",
         field: "transactions",
         width: 150,
-        cellRendererFramework: params => {
+        cellRendererFramework: (params) => {
           return (
             <div className="actions cursor-pointer">
               <Edit
@@ -162,95 +162,95 @@ class UsersList extends React.Component {
               <Trash2
                 size={15}
                 onClick={() => {
-                  let selectedData = this.gridApi.getSelectedRows()
-                  this.gridApi.updateRowData({ remove: selectedData })
+                  let selectedData = this.gridApi.getSelectedRows();
+                  this.gridApi.updateRowData({ remove: selectedData });
                 }}
               />
             </div>
-          )
-        }
-      }
-    ]
-  }
+          );
+        },
+      },
+    ],
+  };
 
   async componentDidMount() {
-    await axios.get("api/users/list").then(response => {
-      let rowData = response.data
-      this.setState({ rowData })
-    })
+    await axios.get("api/users/list").then((response) => {
+      let rowData = response.data;
+      this.setState({ rowData });
+    });
   }
 
-  onGridReady = params => {
-    this.gridApi = params.api
-    this.gridColumnApi = params.columnApi
-  }
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  };
 
   filterData = (column, val) => {
-    var filter = this.gridApi.getFilterInstance(column)
-    var modelObj = null
+    var filter = this.gridApi.getFilterInstance(column);
+    var modelObj = null;
     if (val !== "all") {
       modelObj = {
         type: "equals",
-        filter: val
-      }
+        filter: val,
+      };
     }
-    filter.setModel(modelObj)
-    this.gridApi.onFilterChanged()
-  }
+    filter.setModel(modelObj);
+    this.gridApi.onFilterChanged();
+  };
 
-  filterSize = val => {
+  filterSize = (val) => {
     if (this.gridApi) {
-      this.gridApi.paginationSetPageSize(Number(val))
+      this.gridApi.paginationSetPageSize(Number(val));
       this.setState({
-        pageSize: val
-      })
+        pageSize: val,
+      });
     }
-  }
-  updateSearchQuery = val => {
-    this.gridApi.setQuickFilter(val)
+  };
+  updateSearchQuery = (val) => {
+    this.gridApi.setQuickFilter(val);
     this.setState({
-      searchVal: val
-    })
-  }
+      searchVal: val,
+    });
+  };
 
   refreshCard = () => {
-    this.setState({ reload: true })
+    this.setState({ reload: true });
     setTimeout(() => {
       this.setState({
         reload: false,
         role: "All",
         selectStatus: "All",
         verified: "All",
-        department: "All"
-      })
-    }, 500)
-  }
+        department: "All",
+      });
+    }, 500);
+  };
 
   toggleCollapse = () => {
-    this.setState(state => ({ collapse: !state.collapse }))
-  }
+    this.setState((state) => ({ collapse: !state.collapse }));
+  };
   onEntered = () => {
-    this.setState({ status: "Opened" })
-  }
+    this.setState({ status: "Opened" });
+  };
   onEntering = () => {
-    this.setState({ status: "Opening..." })
-  }
+    this.setState({ status: "Opening..." });
+  };
 
   onEntered = () => {
-    this.setState({ status: "Opened" })
-  }
+    this.setState({ status: "Opened" });
+  };
   onExiting = () => {
-    this.setState({ status: "Closing..." })
-  }
+    this.setState({ status: "Closing..." });
+  };
   onExited = () => {
-    this.setState({ status: "Closed" })
-  }
+    this.setState({ status: "Closed" });
+  };
   removeCard = () => {
-    this.setState({ isVisible: false })
-  }
+    this.setState({ isVisible: false });
+  };
 
   render() {
-    const { rowData, columnDefs, defaultColDef, pageSize } = this.state
+    const { rowData, columnDefs, defaultColDef, pageSize } = this.state;
     return (
       <Row className="app-user-list">
         <Col sm="12">
@@ -260,7 +260,7 @@ class UsersList extends React.Component {
               "card-collapsed": this.state.status === "Closed",
               closing: this.state.status === "Closing...",
               opening: this.state.status === "Opening...",
-              refreshing: this.state.reload
+              refreshing: this.state.reload,
             })}
           >
             <CardHeader>
@@ -275,8 +275,8 @@ class UsersList extends React.Component {
                   className="mr-50"
                   size={15}
                   onClick={() => {
-                    this.refreshCard()
-                    this.gridApi.setFilterModel(null)
+                    this.refreshCard();
+                    this.gridApi.setFilterModel(null);
                   }}
                 />
                 <X size={15} onClick={this.removeCard} />
@@ -304,17 +304,17 @@ class UsersList extends React.Component {
                         name="role"
                         id="role"
                         value={this.state.role}
-                        onChange={e => {
+                        onChange={(e) => {
                           this.setState(
                             {
-                              role: e.target.value
+                              role: e.target.value,
                             },
                             () =>
                               this.filterData(
                                 "role",
                                 this.state.role.toLowerCase()
                               )
-                          )
+                          );
                         }}
                       >
                         <option value="All">All</option>
@@ -332,17 +332,17 @@ class UsersList extends React.Component {
                         name="status"
                         id="status"
                         value={this.state.selectStatus}
-                        onChange={e => {
+                        onChange={(e) => {
                           this.setState(
                             {
-                              selectStatus: e.target.value
+                              selectStatus: e.target.value,
                             },
                             () =>
                               this.filterData(
                                 "status",
                                 this.state.selectStatus.toLowerCase()
                               )
-                          )
+                          );
                         }}
                       >
                         <option value="All">All</option>
@@ -360,17 +360,17 @@ class UsersList extends React.Component {
                         name="verified"
                         id="verified"
                         value={this.state.verified}
-                        onChange={e => {
+                        onChange={(e) => {
                           this.setState(
                             {
-                              verified: e.target.value
+                              verified: e.target.value,
                             },
                             () =>
                               this.filterData(
                                 "is_verified",
                                 this.state.verified.toLowerCase()
                               )
-                          )
+                          );
                         }}
                       >
                         <option value="All">All</option>
@@ -387,17 +387,17 @@ class UsersList extends React.Component {
                         name="department"
                         id="department"
                         value={this.state.department}
-                        onChange={e => {
+                        onChange={(e) => {
                           this.setState(
                             {
-                              department: e.target.value
+                              department: e.target.value,
                             },
                             () =>
                               this.filterData(
                                 "department",
                                 this.state.department.toLowerCase()
                               )
-                          )
+                          );
                         }}
                       >
                         <option value="All">All</option>
@@ -456,7 +456,7 @@ class UsersList extends React.Component {
                       className="w-50 mr-1 mb-1 mb-sm-0"
                       type="text"
                       placeholder="search..."
-                      onChange={e => this.updateSearchQuery(e.target.value)}
+                      onChange={(e) => this.updateSearchQuery(e.target.value)}
                       value={this.state.searchVal}
                     />
                     <div className="dropdown actions-dropdown">
@@ -489,7 +489,7 @@ class UsersList extends React.Component {
                 </div>
                 {this.state.rowData !== null ? (
                   <ContextLayout.Consumer>
-                    {context => (
+                    {(context) => (
                       <AgGridReact
                         gridOptions={{}}
                         rowSelection="multiple"
@@ -514,8 +514,8 @@ class UsersList extends React.Component {
           </Card>
         </Col>
       </Row>
-    )
+    );
   }
 }
 
-export default UsersList
+export default UsersList;

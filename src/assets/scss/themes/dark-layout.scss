@@ -2583,14 +2583,7 @@ body {
 
     /********** HORIZONTAL Layout **********/
     .horizontal-layout {
-      .horizontal-menu-wrapper {
-        background: linear-gradient(
-          to bottom,
-          rgba(37, 43, 71, 0.76) 44%,
-          rgba(56, 53, 53, 0.46) 73%,
-          rgba(255, 255, 255, 0) 100%
-        );
-      }
+
       .header-navbar {
         background-color: $dark-card-color !important;
         #main-menu-navigation {

@@ -1,47 +1,48 @@
-import React from "react"
-import { Navbar } from "reactstrap"
-import { connect } from "react-redux"
-import classnames from "classnames"
-import { useAuth0 } from "../../../authServices/auth0/auth0Service"
+import React from "react";
+import { Navbar } from "reactstrap";
+import { connect } from "react-redux";
+import classnames from "classnames";
+import { useAuth0 } from "../../../authServices/auth0/auth0Service";
 import {
   logoutWithJWT,
-  logoutWithFirebase
-} from "../../../redux/actions/auth/loginActions"
-import NavbarBookmarks from "./NavbarBookmarks"
-import NavbarUser from "./NavbarUser"
-import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg"
+  logoutWithFirebase,
+} from "../../../redux/actions/auth/loginActions";
+import NavbarBookmarks from "./NavbarBookmarks";
+import NavbarUser from "./NavbarUser";
+import userImg from "../../../assets/img/portrait/small/avatar-s-11.jpg";
 
-const UserName = props => {
-  let username = ""
+const UserName = (props) => {
+  let username = "";
   if (props.userdata !== undefined) {
-    username = props.userdata.name
+    username = props.userdata.name;
   } else if (props.user.login.values !== undefined) {
-    username = props.user.login.values.name
+    username = props.user.login.values.name;
     if (
       props.user.login.values.loggedInWith !== undefined &&
       props.user.login.values.loggedInWith === "jwt"
     ) {
-      username = props.user.login.values.loggedInUser.name
+      username = props.user.login.values.loggedInUser.name;
     }
   } else {
-    username = "John Doe"
+    username = "John Doe";
   }
 
-  return username
-}
-const ThemeNavbar = props => {
+  return username;
+};
+const ThemeNavbar = (props) => {
   // const { user } = useAuth0()
-  const colorsArr = [ "primary", "danger", "success", "info", "warning", "dark"]
-  const navbarTypes = ["floating" , "static" , "sticky" , "hidden"]
+  const colorsArr = ["primary", "danger", "success", "info", "warning", "dark"];
+  const navbarTypes = ["floating", "static", "sticky", "hidden"];
   return (
     <React.Fragment>
       <div className="content-overlay" />
-      <div className="header-navbar-shadow" />
       <Navbar
         className={classnames(
           "header-navbar navbar-expand-lg navbar navbar-with-menu navbar-shadow",
           {
-            "navbar-light": props.navbarColor === "default" || !colorsArr.includes(props.navbarColor),
+            "navbar-light":
+              props.navbarColor === "default" ||
+              !colorsArr.includes(props.navbarColor),
             "navbar-dark": colorsArr.includes(props.navbarColor),
             "bg-primary":
               props.navbarColor === "primary" && props.navbarType !== "static",
@@ -57,12 +58,12 @@ const ThemeNavbar = props => {
               props.navbarColor === "dark" && props.navbarType !== "static",
             "d-none": props.navbarType === "hidden" && !props.horizontal,
             "floating-nav":
-              (props.navbarType === "floating" && !props.horizontal) || (!navbarTypes.includes(props.navbarType) && !props.horizontal),
+              (props.navbarType === "floating" && !props.horizontal) ||
+              (!navbarTypes.includes(props.navbarType) && !props.horizontal),
             "navbar-static-top":
               props.navbarType === "static" && !props.horizontal,
             "fixed-top": props.navbarType === "sticky" || props.horizontal,
-            "scrolling": props.horizontal && props.scrolling
-
+            scrolling: props.horizontal && props.scrolling,
           }
         )}
       >
@@ -104,17 +105,17 @@ const ThemeNavbar = props => {
         </div>
       </Navbar>
     </React.Fragment>
-  )
-}
+  );
+};
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.auth
-  }
-}
+    user: state.auth,
+  };
+};
 
 export default connect(mapStateToProps, {
   logoutWithJWT,
   logoutWithFirebase,
-  useAuth0
-})(ThemeNavbar)
+  useAuth0,
+})(ThemeNavbar);

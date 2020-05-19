@@ -163,7 +163,7 @@
         }
       }
 
-      
+
       .open {
         &.active {
           > a {
@@ -213,7 +213,7 @@
       align-items: center;
     }
     &.hover .nav-link {
-      background: $body-bg;
+      background: #ececec;
       border-radius: 4px;
     }
     .nav-item-wrapper {
@@ -239,13 +239,7 @@
       }
     }
     .horizontal-menu-wrapper {
-      background: linear-gradient(
-        to bottom,
-        rgba(248, 248, 248, 0.95) 44%,
-        rgba(248, 248, 248, 0.46) 73%,
-        rgba(255, 255, 255, 0) 100%
-      );
-      background-repeat: repeat-x;
+
       .navbar-horizontal.floating-nav {
         margin: 1.3rem 2.2rem 0;
       }
@@ -272,7 +266,7 @@
       }
     }
   }
- 
+
   &.navbar-sticky {
     .app-content {
       padding-top: 8.5rem;

@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Card,
   CardBody,
@@ -7,16 +7,16 @@ import {
   UncontrolledDropdown,
   DropdownMenu,
   DropdownItem,
-  DropdownToggle
-} from "reactstrap"
-import { AgGridReact } from "ag-grid-react"
-import { ContextLayout } from "../../../utility/context/Layout"
-import { ChevronDown } from "react-feather"
-import axios from "axios"
+  DropdownToggle,
+} from "reactstrap";
+import { AgGridReact } from "ag-grid-react";
+import { ContextLayout } from "../../../utility/context/Layout";
+import { ChevronDown } from "react-feather";
+import axios from "axios";
 
-import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss"
+import "../../../assets/scss/plugins/tables/_agGridStyleOverride.scss";
 
-import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb"
+import Breadcrumbs from "../../../components/@vuexy/breadCrumbs/BreadCrumb";
 
 class AggridTable extends React.Component {
   state = {
@@ -28,7 +28,7 @@ class AggridTable extends React.Component {
       sortable: true,
       editable: true,
       resizable: true,
-      suppressMenu: true
+      suppressMenu: true,
     },
     columnDefs: [
       {
@@ -38,94 +38,94 @@ class AggridTable extends React.Component {
         filter: true,
         checkboxSelection: true,
         headerCheckboxSelectionFilteredOnly: true,
-        headerCheckboxSelection: true
+        headerCheckboxSelection: true,
       },
       {
         headerName: "Last Name",
         field: "lastname",
         filter: true,
-        width: 175
+        width: 175,
       },
       {
         headerName: "Email",
         field: "email",
         filter: true,
         width: 250,
-        pinned: window.innerWidth > 992 ? "left" : false
+        pinned: window.innerWidth > 992 ? "left" : false,
       },
       {
         headerName: "Company",
         field: "company",
         filter: true,
-        width: 250
+        width: 250,
       },
       {
         headerName: "City",
         field: "city",
         filter: true,
-        width: 150
+        width: 150,
       },
       {
         headerName: "Country",
         field: "country",
         filter: true,
-        width: 150
+        width: 150,
       },
       {
         headerName: "State",
         field: "state",
         filter: true,
-        width: 125
+        width: 125,
       },
       {
         headerName: "Zip",
         field: "zip",
         filter: "agNumberColumnFilter",
-        width: 140
+        width: 140,
       },
       {
         headerName: "Followers",
         field: "followers",
         filter: "agNumberColumnFilter",
-        width: 140
-      }
-    ]
-  }
+        width: 140,
+      },
+    ],
+  };
 
   componentDidMount() {
-    axios.get("/api/aggrid/data").then(response => {
-      let rowData = response.data.data
-      JSON.stringify(rowData)
-      this.setState({ rowData })
-    })
+    axios.get("/api/aggrid/data").then((response) => {
+      let rowData = response.data.data;
+      JSON.stringify(rowData);
+      this.setState({ rowData });
+    });
   }
 
-  onGridReady = params => {
-    this.gridApi = params.api
-    this.gridColumnApi = params.columnApi
+  onGridReady = (params) => {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
     this.setState({
       currenPageSize: this.gridApi.paginationGetCurrentPage() + 1,
       getPageSize: this.gridApi.paginationGetPageSize(),
-      totalPages: this.gridApi.paginationGetTotalPages()
-    })
-  }
+      totalPages: this.gridApi.paginationGetTotalPages(),
+    });
+  };
 
-  updateSearchQuery = val => {
-    this.gridApi.setQuickFilter(val)
-  }
+  updateSearchQuery = (val) => {
+    this.gridApi.setQuickFilter(val);
+  };
 
-  filterSize = val => {
+  filterSize = (val) => {
     if (this.gridApi) {
-      this.gridApi.paginationSetPageSize(Number(val))
+      this.gridApi.paginationSetPageSize(Number(val));
       this.setState({
         currenPageSize: val,
-        getPageSize: val
-      })
+        getPageSize: val,
+      });
     }
-  }
+  };
 
   render() {
-    const { rowData, columnDefs, defaultColDef } = this.state
+    const { rowData, columnDefs, defaultColDef } = this.state;
     return (
       <React.Fragment>
         <Breadcrumbs
@@ -186,7 +186,7 @@ class AggridTable extends React.Component {
                     <div className="table-input mr-1">
                       <Input
                         placeholder="search..."
-                        onChange={e => this.updateSearchQuery(e.target.value)}
+                        onChange={(e) => this.updateSearchQuery(e.target.value)}
                         value={this.state.value}
                       />
                     </div>
@@ -201,7 +201,7 @@ class AggridTable extends React.Component {
                   </div>
                 </div>
                 <ContextLayout.Consumer>
-                  {context => (
+                  {(context) => (
                     <AgGridReact
                       gridOptions={{}}
                       rowSelection="multiple"
@@ -224,7 +224,7 @@ class AggridTable extends React.Component {
           </CardBody>
         </Card>
       </React.Fragment>
-    )
+    );
   }
 }
-export default AggridTable
+export default AggridTable;

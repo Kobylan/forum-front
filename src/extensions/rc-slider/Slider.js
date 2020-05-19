@@ -1,15 +1,15 @@
-import React from "react"
-import ExtensionsHeader from "../extensionsHeader"
-import { Row, Col } from "reactstrap"
-import { ContextLayout } from "../../utility/context/Layout"
-import SliderBasic from "./SliderBasic"
-import SliderMarks from "./SliderMarks"
-import SliderRange from "./SliderRange"
-import SliderDynamic from "./SliderDynamic"
-import SliderVertical from "./SliderVertical"
-import "rc-slider/assets/index.css"
-import "rc-tooltip/assets/bootstrap.css"
-import "../../assets/scss/plugins/extensions/slider.scss"
+import React from "react";
+import ExtensionsHeader from "../extensionsHeader";
+import { Row, Col } from "reactstrap";
+import { ContextLayout } from "../../utility/context/Layout";
+import SliderBasic from "./SliderBasic";
+import SliderMarks from "./SliderMarks";
+import SliderRange from "./SliderRange";
+import SliderDynamic from "./SliderDynamic";
+import SliderVertical from "./SliderVertical";
+import "rc-slider/assets/index.css";
+import "rc-tooltip/assets/bootstrap.css";
+import "../../assets/scss/plugins/extensions/slider.scss";
 class Slider extends React.Component {
   render() {
     return (
@@ -20,7 +20,7 @@ class Slider extends React.Component {
           link="https://github.com/react-component/slider/"
         />
         <ContextLayout.Consumer>
-          {context => (
+          {(context) => (
             <Row>
               <Col sm="12">
                 <SliderBasic rtl={context.state.direction} />
@@ -41,8 +41,8 @@ class Slider extends React.Component {
           )}
         </ContextLayout.Consumer>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default Slider
+export default Slider;
