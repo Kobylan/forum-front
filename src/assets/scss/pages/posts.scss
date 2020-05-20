@@ -6,7 +6,6 @@
 .text-overflow{
   max-height: 17em;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(180deg,#000 80%,transparent);
   mask-image: linear-gradient(180deg,#000 80%,transparent);
 }
 .views{

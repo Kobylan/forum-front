@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getComments, addNewComment } from "../../../redux/actions/comments";
-import { Button, Card, NavItem, NavLink } from "reactstrap";
+import { addNewComment, getComments } from "../../../redux/actions/comments";
+import { Button } from "reactstrap";
 import bold from "../../../assets/svgIconsToolbar/bold.svg";
 import italic from "../../../assets/svgIconsToolbar/italic.svg";
 import code from "../../../assets/svgIconsToolbar/code.svg";
@@ -20,6 +20,7 @@ import "../../../assets/scss/plugins/extensions/editor.scss";
 import draftToHtml from "draftjs-to-html";
 import { ThumbsDown, ThumbsUp } from "react-feather";
 import { Reaction } from "../../../redux/actions/forum/index";
+
 const authorID = {
   id: 1,
   nickname: "Pirozhok",
@@ -77,8 +78,8 @@ class CommentList extends React.Component {
                 <td dangerouslySetInnerHTML={{ __html: comment.content }} />
               </span>
               <div className="d-flex align-items-center">
-                <div
-                  className="pr-2 cursor-pointer"
+                <a
+                  className="pr-2 "
                   onClick={(e) =>
                     this.props.Reaction(
                       {
@@ -92,9 +93,8 @@ class CommentList extends React.Component {
                   }
                 >
                   <ThumbsUp size={15} className="" /> {comment.likes}
-                </div>
-                <div
-                  className={"cursor-pointer"}
+                </a>
+                <a
                   onClick={(e) => {
                     this.props.Reaction(
                       {
@@ -108,7 +108,7 @@ class CommentList extends React.Component {
                   }}
                 >
                   <ThumbsDown size={15} /> {comment.dislikes}
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ class CommentList extends React.Component {
           <Editor
             toolbarClassName="demo-toolbar-absolute"
             wrapperClassName="demo-wrapper"
-            editorClassName="demo-editor"
+            editorClassName="comment-editor"
             editorState={editorState}
             toolbar={{
               options: ["inline", "blockType", "list", "link", "history"],

@@ -7,12 +7,12 @@ import Footer from "./components/footer/Footer";
 import themeConfig from "../configs/themeConfig";
 import { connect } from "react-redux";
 import {
-  changeNavbarColor,
-  changeNavbarType,
   changeFooterType,
   changeMenuColor,
-  hideScrollToTop,
   changeMode,
+  changeNavbarColor,
+  changeNavbarType,
+  hideScrollToTop,
 } from "../redux/actions/customizer/index";
 
 class HorizontalLayout extends PureComponent {
@@ -198,7 +198,7 @@ class HorizontalLayout extends PureComponent {
         >
           <Navbar
             horizontal
-            scrolling={this.state.scroll > 50 ? true : false}
+            scrolling={this.state.scroll > 50}
             toggleSidebarMenu={this.toggleSidebarMenu}
             sidebarState={this.state.sidebarState}
             sidebarVisibility={this.handleSidebarVisibility}

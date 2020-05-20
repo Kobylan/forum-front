@@ -8,6 +8,8 @@ import "../../assets/scss/pages/posts.scss";
 import { MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
 import { GetCategories } from "./GetCategories";
 import CommentList from "./Comments/CommentList";
+import ReactHtmlParser from "react-html-parser";
+
 class Posts extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (props.app.forum.routeParam !== state.currentLocation) {
@@ -33,8 +35,7 @@ class Posts extends React.Component {
 
   render() {
     const { topic } = this.state;
-    console.log("lololol", topic);
-    let renderTopic = this.state.parsed ? (
+    return this.state.parsed ? (
       <Card
         className={"animated fadeInUp faster col-sm-12 col-md-8 offset-md-2"}
       >
@@ -51,12 +52,12 @@ class Posts extends React.Component {
           <CardTitle>{topic.title}</CardTitle>
         </CardHeader>
         <CardBody>
-          <td dangerouslySetInnerHTML={{ __html: topic.content }} />
+          {ReactHtmlParser(topic.content)}
 
           <div className="d-flex justify-content-start align-items-center mb-1">
             <div className="d-flex align-items-center">
-              <div
-                className="pr-2 cursor-pointer"
+              <a
+                className="pr-2"
                 onClick={(e) =>
                   this.props.Reaction({
                     author_id: 1,
@@ -67,9 +68,8 @@ class Posts extends React.Component {
                 }
               >
                 <ThumbsUp size={15} className="" /> {topic.likes}
-              </div>
-              <div
-                className={"cursor-pointer"}
+              </a>
+              <a
                 onClick={(e) => {
                   this.props.Reaction({
                     author_id: 1,
@@ -80,7 +80,7 @@ class Posts extends React.Component {
                 }}
               >
                 <ThumbsDown size={15} /> {topic.dislikes}
-              </div>
+              </a>
             </div>
             <p className="ml-auto">
               <MessageSquare size={15} /> {topic.comments}
@@ -90,8 +90,6 @@ class Posts extends React.Component {
         </CardBody>
       </Card>
     ) : null;
-
-    return renderTopic;
   }
 }
 const mapStateToProps = (state) => {

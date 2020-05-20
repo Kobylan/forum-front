@@ -1,19 +1,19 @@
-import React from "react"
-import { connect } from "react-redux"
-import { Row, Col } from "reactstrap"
-import Tour, { STATUS } from "react-joyride"
-import SalesCard from "./SalesCard"
-import SuberscribersGained from "../../ui-elements/cards/statistics/SubscriberGained"
-import OrdersReceived from "../../ui-elements/cards/statistics/OrdersReceived"
-import AvgSession from "../../ui-elements/cards/analytics/AvgSessions"
-import SupportTracker from "../../ui-elements/cards/analytics/SupportTracker"
-import ProductOrders from "../../ui-elements/cards/analytics/ProductOrders"
-import SalesStat from "../../ui-elements/cards/analytics/Sales"
-import ActivityTimeline from "./ActivityTimeline"
-import DispatchedOrders from "./DispatchedOrders"
-import themeConfig from "../../../configs/themeConfig"
-import "../../../assets/scss/plugins/extensions/react-tour.scss"
-import "../../../assets/scss/pages/dashboard-analytics.scss"
+import React from "react";
+import { connect } from "react-redux";
+import { Col, Row } from "reactstrap";
+import Tour, { STATUS } from "react-joyride";
+import SalesCard from "./SalesCard";
+import SuberscribersGained from "../../ui-elements/cards/statistics/SubscriberGained";
+import OrdersReceived from "../../ui-elements/cards/statistics/OrdersReceived";
+import AvgSession from "../../ui-elements/cards/analytics/AvgSessions";
+import SupportTracker from "../../ui-elements/cards/analytics/SupportTracker";
+import ProductOrders from "../../ui-elements/cards/analytics/ProductOrders";
+import SalesStat from "../../ui-elements/cards/analytics/Sales";
+import ActivityTimeline from "./ActivityTimeline";
+import DispatchedOrders from "./DispatchedOrders";
+import themeConfig from "../../../configs/themeConfig";
+import "../../../assets/scss/plugins/extensions/react-tour.scss";
+import "../../../assets/scss/pages/dashboard-analytics.scss";
 
 let $primary = "#7367F0",
   $danger = "#EA5455",
@@ -25,62 +25,60 @@ let $primary = "#7367F0",
   $info_light = "#1edec5",
   $stroke_color = "#e8e8e8",
   $label_color = "#e7eef7",
-  $white = "#fff"
+  $white = "#fff";
 
-let tourState = !themeConfig.disableThemeTour
+let tourState = !themeConfig.disableThemeTour;
 
 class AnalyticsDashboard extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isTouropen: tourState,
-      width : window.innerWidth
-    }
+      width: window.innerWidth,
+    };
   }
 
   updateWidth = () => {
-    this.setState(prevState => ({
-      width: window.innerWidth
-    }))
-  }
+    this.setState((prevState) => ({
+      width: window.innerWidth,
+    }));
+  };
 
- componentDidMount() {
-  if (window !== "undefined") {
-    window.addEventListener("resize", this.updateWidth, false)
+  componentDidMount() {
+    if (window !== "undefined") {
+      window.addEventListener("resize", this.updateWidth, false);
+    }
   }
- }
- 
 
   render() {
-    
     const steps = [
       {
         target: '[data-tour="toggle-icon"]',
-        content : "Toggle Collapse Sidebar.",
-        disableBeacon: true
+        content: "Toggle Collapse Sidebar.",
+        disableBeacon: true,
       },
       {
         target: "[data-tour='language']",
-        content : "You can change language from here.",
-        disableBeacon: true
+        content: "You can change language from here.",
+        disableBeacon: true,
       },
       {
         target: "[data-tour='search']",
-        content : "Try fuzzy search to visit pages in flash."             ,
-        disableBeacon: true
+        content: "Try fuzzy search to visit pages in flash.",
+        disableBeacon: true,
       },
       {
         target: "[data-tour='user']",
-        content :  " Here is user dropdown",
-        disableBeacon: true
+        content: " Here is user dropdown",
+        disableBeacon: true,
       },
       {
         target: ".buy-now",
         content: "Buy this awesomeness at affordable price!",
-        disableBeacon : true
-      }
-    ]
-    
+        disableBeacon: true,
+      },
+    ];
+
     return (
       <React.Fragment>
         <Row className="match-height">
@@ -134,30 +132,32 @@ class AnalyticsDashboard extends React.Component {
             <DispatchedOrders />
           </Col>
         </Row>
-        {this.props.layout !== "horizontal" && this.state.width >= 1200 && <Tour
+        {this.props.layout !== "horizontal" && this.state.width >= 1200 && (
+          <Tour
             steps={steps}
             run={this.state.isTouropen}
             continuous={true}
             showSkipButton={true}
-            floaterProps={{disableAnimation : true}}
-            callback={data => {
-              if(([STATUS.FINISHED, STATUS.SKIPPED].includes(data.status)) || data.action === "close"){
-                this.setState({ isTouropen : false })
+            floaterProps={{ disableAnimation: true }}
+            callback={(data) => {
+              if (
+                [STATUS.FINISHED, STATUS.SKIPPED].includes(data.status) ||
+                data.action === "close"
+              ) {
+                this.setState({ isTouropen: false });
               }
             }}
           />
-        }
-          
-        
+        )}
       </React.Fragment>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    layout : state.customizer.customizer.layout
-  }
-}
+    layout: state.customizer.customizer.layout,
+  };
+};
 
-export default connect(mapStateToProps)(AnalyticsDashboard)
+export default connect(mapStateToProps)(AnalyticsDashboard);

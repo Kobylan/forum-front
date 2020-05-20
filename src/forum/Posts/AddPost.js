@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {
+  Button,
   Card,
   CardBody,
   CardHeader,
-  Input,
   CardSubtitle,
-  Button,
+  Input,
 } from "reactstrap";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
+import { convertToRaw, EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../assets/scss/plugins/extensions/editor.scss";
 import { addNewPost } from "../../redux/actions/forum";
@@ -29,6 +29,7 @@ import unlink from "../../assets/svgIconsToolbar/unlink.svg";
 import undo from "../../assets/svgIconsToolbar/undo.svg";
 import redo from "../../assets/svgIconsToolbar/redo.svg";
 import code from "../../assets/svgIconsToolbar/code.svg";
+
 class AddPost extends Component {
   state = {
     categories: [],
@@ -36,6 +37,7 @@ class AddPost extends Component {
     cats: null,
     title: "",
     catsErr: false,
+    alert: true,
   };
   componentDidMount() {
     axios.get(`http://localhost:8080/api/categories`).then((response) => {
@@ -112,6 +114,7 @@ class AddPost extends Component {
       categories_id: categories,
     };
     this.props.addNewPost(NewPost);
+    this.props.history.push(`/`);
   };
 
   render() {
