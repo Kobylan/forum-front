@@ -1,32 +1,32 @@
-import React from "react"
+import React from "react";
 import {
   Card,
   CardBody,
   CardHeader,
   CardTitle,
   Button,
-  UncontrolledCollapse
-} from "reactstrap"
-import ExtensionsHeader from "../extensionsHeader"
-import { connect } from "react-redux"
-import { Link } from "react-router-dom"
-import { changeRole } from "../../redux/actions/auth/loginActions"
-import Radio from "../../components/@vuexy/radio/RadioVuexy"
-import { ChevronDown } from "react-feather"
+  UncontrolledCollapse,
+} from "reactstrap";
+import ExtensionsHeader from "../extensionsHeader";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { changeRole } from "../../redux/actions/auth/loginActions";
+import Radio from "../../components/@vuexy/radio/RadioVuexy";
+import { ChevronDown } from "react-feather";
 class AccessControl extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (props.role !== state.role) {
       return {
-        role: props.role
-      }
+        role: props.role,
+      };
     }
     // Return null if the state hasn't changed
-    return null
+    return null;
   }
 
   state = {
-    role: this.props.role
-  }
+    role: this.props.role,
+  };
 
   render() {
     return (
@@ -183,13 +183,13 @@ class AccessControl extends React.Component {
           </CardBody>
         </Card>
       </React.Fragment>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    role: state.auth.login.userRole
-  }
-}
-export default connect(mapStateToProps, { changeRole })(AccessControl)
+    role: state.auth.login.userRole,
+  };
+};
+export default connect(mapStateToProps, { changeRole })(AccessControl);

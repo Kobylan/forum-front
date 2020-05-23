@@ -6,7 +6,7 @@ const API_URI = "http://localhost:8080";
 export const getTopics = (routeParams) => {
   return async (dispatch) => {
     await axios
-      .get(`${API_URI}/api/posts`, {
+      .get(`${API_URI}/api/posts?liked=0&created=0`, {
         params: routeParams,
       })
       .then((result) => {
@@ -38,7 +38,8 @@ export const getTopic = (id) => {
 
 export const addNewPost = (post) => {
   return (dispatch) => {
-    axios.post(`${API_URI}/api/posts`, post).then((response) => {
+    axios.post(`${API_URI}/api/addpost`, post).then((response) => {
+      console.log(response);
       dispatch({ type: "ADD_POST", post });
     });
   };

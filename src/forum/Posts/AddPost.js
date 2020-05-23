@@ -113,8 +113,7 @@ class AddPost extends Component {
       content: content,
       categories_id: categories,
     };
-    this.props.addNewPost(NewPost);
-    this.props.history.push(`/`);
+    this.props.addNewPost(NewPost).then(this.props.history.push(`/`));
   };
 
   render() {

@@ -41,6 +41,7 @@ class Posts extends React.Component {
       >
         <CardHeader>
           <small className="text-muted">
+            {console.log("topic", topic)}
             {topic.categories.length > 0 ? (
               <GetCategories categories={topic.categories} />
             ) : null}{" "}

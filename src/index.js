@@ -15,19 +15,20 @@ const LazyApp = lazy(() => import("./App"));
 // configureDatabase()
 
 ReactDOM.render(
-  // <Auth0Provider
-  //   domain={config.domain}
-  //   client_id={config.clientId}
-  //   redirect_uri={window.location.origin + process.env.REACT_APP_PUBLIC_PATH }
-  // >
-  <Provider store={store}>
-    <Suspense fallback={<Spinner />}>
-      <Layout>
-        <LazyApp />
-      </Layout>
-    </Suspense>
-  </Provider>,
-  // </Auth0Provider>,
+  <Auth0Provider
+    domain={config.domain}
+    client_id={config.clientId}
+    redirect_uri={window.location.origin + process.env.REACT_APP_PUBLIC_PATH}
+  >
+    <Provider store={store}>
+      <Suspense fallback={<Spinner />}>
+        <Layout>
+          <LazyApp />
+        </Layout>
+      </Suspense>
+    </Provider>
+    ,
+  </Auth0Provider>,
   document.getElementById("root")
 );
 
