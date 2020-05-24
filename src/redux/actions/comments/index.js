@@ -1,25 +1,24 @@
-import axios from "axios"
-import {getTopic, getTopics} from "../forum";
+import axios from "axios";
+import { getTopic } from "../forum";
 
-const API_URI = "http://localhost:8080"
+const API_URI = "";
 
-export const getComments = id => {
-  return async dispatch => {
+export const getComments = (id) => {
+  return async (dispatch) => {
     await axios
       .get(`${API_URI}/api/comments?post_id=${id}`, {
-        params: id
+        params: id,
       })
-      .then(result => {
+      .then((result) => {
         dispatch({
           type: "GET_COMMENTS",
           comments: result.data,
-          id
-        })
+          id,
+        });
       })
-      .catch(err => console.log(err))
-  }
-}
-
+      .catch((err) => console.log(err));
+  };
+};
 
 // export const trashComment = id => {
 //   return (dispatch, getState) => {
@@ -31,16 +30,13 @@ export const getComments = id => {
 //   }
 // }
 
-
-export const addNewComment = comment => {
+export const addNewComment = (comment) => {
   return (dispatch, getState) => {
-    const id = getState().comments.comments.routeParam
-    axios.post(`${API_URI}/api/comment`, comment).then(response => {
-      dispatch({ type: "ADD_COMMENT", comment })
-      dispatch(getComments(id))
-      dispatch(getTopic(id))
-    })
-  }
-}
-
-
+    const id = getState().comments.comments.routeParam;
+    axios.post(`${API_URI}/api/comment`, comment).then((response) => {
+      dispatch({ type: "ADD_COMMENT", comment });
+      dispatch(getComments(id));
+      dispatch(getTopic(id));
+    });
+  };
+};

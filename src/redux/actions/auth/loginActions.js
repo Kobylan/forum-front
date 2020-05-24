@@ -1,7 +1,7 @@
 import { history } from "../../../history";
 import axios from "axios";
 
-const API_URI = "http://localhost:8080";
+const API_URI = "";
 export const loginWithJWT = (user) => {
   return (dispatch) => {
     axios
@@ -30,7 +30,7 @@ export const loginWithJWT = (user) => {
 export const logoutWithJWT = () => {
   return (dispatch) => {
     dispatch({ type: "LOGOUT_WITH_JWT", payload: {} });
-    history.push("/pages/login");
+    history.push("/login");
   };
 };
 

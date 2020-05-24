@@ -2,7 +2,7 @@ import axios from "axios";
 import { history } from "../../../history";
 import { getComments } from "../comments";
 
-const API_URI = "http://localhost:8080";
+const API_URI = "";
 export const getTopics = (routeParams) => {
   return async (dispatch) => {
     await axios

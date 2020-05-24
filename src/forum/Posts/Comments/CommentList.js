@@ -79,7 +79,6 @@ class CommentList extends React.Component {
               </span>
               <div className="d-flex align-items-center">
                 <a
-                  href={"/"}
                   className="pr-2 "
                   onClick={(e) =>
                     this.props.Reaction(
@@ -96,7 +95,6 @@ class CommentList extends React.Component {
                   <ThumbsUp size={15} className="" /> {comment.likes}
                 </a>
                 <a
-                  href={"/"}
                   onClick={(e) => {
                     this.props.Reaction(
                       {

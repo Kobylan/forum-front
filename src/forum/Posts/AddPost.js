@@ -40,7 +40,7 @@ class AddPost extends Component {
     alert: true,
   };
   componentDidMount() {
-    axios.get(`http://localhost:8080/api/categories`).then((response) => {
+    axios.get(`/api/categories`).then((response) => {
       this.setState({
         categories: response.data.all_categories,
       });

@@ -31,7 +31,7 @@ const Footer = (props) => {
             Serik,
           </a>
           <a href="/" target="_self" rel="noopener noreferrer">
-            Kobylan,
+            Kobylan{" "}
           </a>
           All rights reserved
         </span>
