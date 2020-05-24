@@ -1,24 +1,11 @@
-import firebase from "firebase/app";
-
 import { history } from "../../../history";
-import "firebase/auth";
-import "firebase/database";
 import axios from "axios";
-import { config } from "../../../authServices/firebase/firebaseConfig";
 
-// Init firebase if not already initialized
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
-
-// let firebaseAuth = firebase.auth()
-
-// const initAuth0 = new auth0.WebAuth(configAuth)
-
+const API_URI = "http://localhost:8080";
 export const loginWithJWT = (user) => {
   return (dispatch) => {
     axios
-      .post("/api/authenticate/login/user", {
+      .post(`${API_URI}/api/login`, {
         email: user.email,
         password: user.password,
       })

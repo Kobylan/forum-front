@@ -1,27 +1,27 @@
-import React from "react"
-import { Form, FormGroup, Input, Label, Button } from "reactstrap"
-import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy"
-import { Check } from "react-feather"
-import { connect } from "react-redux"
-import { signupWithJWT } from "../../../../redux/actions/auth/registerActions"
-import { history } from "../../../../history"
+import React from "react";
+import { Form, FormGroup, Input, Label, Button } from "reactstrap";
+import Checkbox from "../../../../components/@vuexy/checkbox/CheckboxesVuexy";
+import { Check } from "react-feather";
+import { connect } from "react-redux";
+import { signupWithJWT } from "../../../../redux/actions/auth/registerActions";
+import { history } from "../../../../history";
 
 class RegisterJWT extends React.Component {
   state = {
     email: "",
     password: "",
     name: "",
-    confirmPass: ""
-  }
+    confirmPass: "",
+  };
 
-  handleRegister = e => {
-    e.preventDefault()
+  handleRegister = (e) => {
+    e.preventDefault();
     this.props.signupWithJWT(
       this.state.email,
       this.state.password,
       this.state.name
-    )
-  }
+    );
+  };
 
   render() {
     return (
@@ -32,7 +32,7 @@ class RegisterJWT extends React.Component {
             placeholder="Name"
             required
             value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
+            onChange={(e) => this.setState({ name: e.target.value })}
           />
           <Label>Name</Label>
         </FormGroup>
@@ -42,7 +42,7 @@ class RegisterJWT extends React.Component {
             placeholder="Email"
             required
             value={this.state.email}
-            onChange={e => this.setState({ email: e.target.value })}
+            onChange={(e) => this.setState({ email: e.target.value })}
           />
           <Label>Email</Label>
         </FormGroup>
@@ -52,7 +52,7 @@ class RegisterJWT extends React.Component {
             placeholder="Password"
             required
             value={this.state.password}
-            onChange={e => this.setState({ password: e.target.value })}
+            onChange={(e) => this.setState({ password: e.target.value })}
           />
           <Label>Password</Label>
         </FormGroup>
@@ -62,7 +62,7 @@ class RegisterJWT extends React.Component {
             placeholder="Confirm Password"
             required
             value={this.state.confirmPass}
-            onChange={e => this.setState({ confirmPass: e.target.value })}
+            onChange={(e) => this.setState({ confirmPass: e.target.value })}
           />
           <Label>Confirm Password</Label>
         </FormGroup>
@@ -79,7 +79,7 @@ class RegisterJWT extends React.Component {
             color="primary"
             outline
             onClick={() => {
-              history.push("/pages/login")
+              history.push("/login");
             }}
           >
             Login
@@ -89,12 +89,12 @@ class RegisterJWT extends React.Component {
           </Button.Ripple>
         </div>
       </Form>
-    )
+    );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    values: state.auth.register
-  }
-}
-export default connect(mapStateToProps, { signupWithJWT })(RegisterJWT)
+    values: state.auth.register,
+  };
+};
+export default connect(mapStateToProps, { signupWithJWT })(RegisterJWT);

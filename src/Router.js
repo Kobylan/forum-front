@@ -363,7 +363,7 @@ class AppRouter extends React.Component {
           />
           <AppRoute path="/misc/error/404" component={error404} fullLayout />
           <AppRoute path="/login" component={Login} fullLayout />
-          <AppRoute path="/pages/register" component={register} fullLayout />
+          <AppRoute path="/register" component={register} fullLayout />
           <AppRoute
             path="/pages/forgot-password"
             component={forgotPassword}
