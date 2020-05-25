@@ -16,6 +16,7 @@ import "../../assets/scss/pages/posts.scss";
 import { MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
 import { Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
+import { getTime } from "./components/getTime";
 
 class Posts extends React.Component {
   static getDerivedStateFromProps(props, state) {
@@ -111,30 +112,3 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getTopics,
 })(Posts);
-
-const getTime = (unix) => {
-  var a = new Date(unix * 1000);
-  var months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time =
-    date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
-  return time;
-};

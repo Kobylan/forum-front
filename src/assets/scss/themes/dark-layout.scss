@@ -61,6 +61,7 @@ body {
     // code, pre, kbd
     pre {
       background-color: $content-dark-bg;
+      color: $theme-dark-text-color;
       border: 0;
       code {
         background-color: inherit;

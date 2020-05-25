@@ -6,20 +6,20 @@ export const styleLight = {
       margin: 0,
       padding: 0,
       color: "#000",
-      fontSize: "14px"
+      fontSize: "14px",
     },
     node: {
       base: {
-        position: "relative"
+        position: "relative",
       },
       link: {
         cursor: "pointer",
         position: "relative",
         padding: "0px 5px",
-        display: "block"
+        display: "block",
       },
       activeLink: {
-        background: "#f8f8f8"
+        background: "#f8f8f8",
       },
       toggle: {
         base: {
@@ -28,28 +28,28 @@ export const styleLight = {
           verticalAlign: "top",
           marginLeft: "-5px",
           height: "24px",
-          width: "24px"
+          width: "24px",
         },
         wrapper: {
           position: "absolute",
           top: "50%",
           left: "50%",
           margin: "-10px 0 0 -7px",
-          height: "14px"
+          height: "14px",
         },
         height: 10,
         width: 10,
         display: "inline-block",
         arrow: {
           fill: "#565656",
-          strokeWidth: 0
-        }
+          strokeWidth: 0,
+        },
       },
       header: {
         base: {
           display: "inline-block",
           verticalAlign: "top",
-          color: "#565656"
+          color: "#565656",
         },
         connector: {
           width: "2px",
@@ -58,23 +58,23 @@ export const styleLight = {
           borderBottom: "solid 2px black",
           position: "absolute",
           top: "0px",
-          left: "-21px"
+          left: "-21px",
         },
         title: {
           lineHeight: "24px",
-          verticalAlign: "middle"
-        }
+          verticalAlign: "middle",
+        },
       },
       subtree: {
         listStyle: "none",
-        paddingLeft: "19px"
+        paddingLeft: "19px",
       },
       loading: {
-        color: "#7367f0"
-      }
-    }
-  }
-}
+        color: "#7367f0",
+      },
+    },
+  },
+};
 
 export const styleDark = {
   tree: {
@@ -84,20 +84,20 @@ export const styleDark = {
       margin: 0,
       padding: 0,
       color: "#c2c6dc",
-      fontSize: "14px"
+      fontSize: "14px",
     },
     node: {
       base: {
-        position: "relative"
+        position: "relative",
       },
       link: {
         cursor: "pointer",
         position: "relative",
         padding: "0px 5px",
-        display: "block"
+        display: "block",
       },
       activeLink: {
-        background: "#10163a"
+        background: "#10163a",
       },
       toggle: {
         base: {
@@ -106,28 +106,28 @@ export const styleDark = {
           verticalAlign: "top",
           marginLeft: "-5px",
           height: "24px",
-          width: "24px"
+          width: "24px",
         },
         wrapper: {
           position: "absolute",
           top: "50%",
           left: "50%",
           margin: "-10px 0 0 -7px",
-          height: "14px"
+          height: "14px",
         },
         height: 10,
         width: 10,
         display: "inline-block",
         arrow: {
           fill: "#fff",
-          strokeWidth: 0
-        }
+          strokeWidth: 0,
+        },
       },
       header: {
         base: {
           display: "inline-block",
           verticalAlign: "top",
-          color: "#fff"
+          color: "#fff",
         },
         connector: {
           width: "2px",
@@ -136,20 +136,20 @@ export const styleDark = {
           borderBottom: "solid 2px black",
           position: "absolute",
           top: "0px",
-          left: "-21px"
+          left: "-21px",
         },
         title: {
           lineHeight: "24px",
-          verticalAlign: "middle"
-        }
+          verticalAlign: "middle",
+        },
       },
       subtree: {
         listStyle: "none",
-        paddingLeft: "19px"
+        paddingLeft: "19px",
       },
       loading: {
-        color: "#7367f0"
-      }
-    }
-  }
-}
+        color: "#7367f0",
+      },
+    },
+  },
+};

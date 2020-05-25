@@ -11,10 +11,11 @@ import {
   TabContent,
   TabPane,
 } from "reactstrap";
-import classnames from "classnames";
 import loginImg from "../../../../assets/img/pages/login.png";
 import "../../../../assets/scss/pages/authentication.scss";
 import LoginJWT from "./LoginJWT";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class Login extends React.Component {
   state = {
@@ -65,6 +66,7 @@ class Login extends React.Component {
             </Row>
           </Card>
         </Col>
+        <ToastContainer />
       </Row>
     );
   }

@@ -2,7 +2,8 @@ const initialState = {
   topics: [],
   routeParam: null,
   topic: {},
-  filteredTopics: [],
+  liked: [],
+  my: [],
 };
 
 const forum = (state = initialState, action) => {
@@ -12,6 +13,16 @@ const forum = (state = initialState, action) => {
         ...state,
         topics: action.topics,
         routeParam: action.routeParams,
+      };
+    case "GET_MY_TOPICS":
+      return {
+        ...state,
+        my: action.topics,
+      };
+    case "GET_LIKED_TOPICS":
+      return {
+        ...state,
+        liked: action.topics,
       };
 
     case "GET_TOPIC":

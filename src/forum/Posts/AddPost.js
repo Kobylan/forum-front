@@ -108,7 +108,6 @@ class AddPost extends Component {
       convertToRaw(this.state.editorState.getCurrentContent())
     );
     const NewPost = {
-      author: { id: 1 },
       title: this.state.title,
       content: content,
       categories_id: categories,

@@ -18,13 +18,11 @@ import { convertToRaw, EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../../assets/scss/plugins/extensions/editor.scss";
 import draftToHtml from "draftjs-to-html";
-import { ThumbsDown, ThumbsUp } from "react-feather";
+import { Heart, MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
 import { Reaction } from "../../../redux/actions/forum/index";
+import person7 from "../../../assets/img/portrait/small/avatar-s-7.jpg";
+import ReactHtmlParser from "react-html-parser";
 
-const authorID = {
-  id: 1,
-  nickname: "Pirozhok",
-};
 class CommentList extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (props.comments.comments.routeParam !== state.currentLocation) {
@@ -40,7 +38,6 @@ class CommentList extends React.Component {
     parsed: false,
     editorState: EditorState.createEmpty(),
     newComment: {
-      author: authorID,
       post_id: this.props.postId,
       content: "",
     },
@@ -72,44 +69,47 @@ class CommentList extends React.Component {
             key={i}
             className="d-flex justify-content-start align-items-center mb-1"
           >
-            <div className="comment-info pl-1">
-              <h6 className="mb-1">{comment.author.nickname}</h6>
+            <div className="comment-info col-sm-10 pl-1">
+              <h6 className="mb-1 ">{comment.author.nickname}</h6>
               <span className="font-small-2">
-                <td dangerouslySetInnerHTML={{ __html: comment.content }} />
+                {ReactHtmlParser(comment.content)}
               </span>
-              <div className="d-flex align-items-center">
-                <a
-                  className="pr-2 "
-                  onClick={(e) =>
-                    this.props.Reaction(
-                      {
-                        author_id: 1,
-                        type: 1,
-                        post_id: 0,
-                        comment_id: comment.id,
-                      },
-                      this.props.postId
-                    )
-                  }
-                >
-                  <ThumbsUp size={15} className="" /> {comment.likes}
-                </a>
-                <a
-                  onClick={(e) => {
-                    this.props.Reaction(
-                      {
-                        author_id: 1,
-                        type: 0,
-                        post_id: 0,
-                        comment_id: comment.id,
-                      },
-                      this.props.postId
-                    );
-                  }}
-                >
-                  <ThumbsDown size={15} /> {comment.dislikes}
-                </a>
-              </div>
+            </div>
+            <div className="ml-auto cursor-pointer">
+              <span
+                style={{ color: comment.user_reaction === 1 ? "#7367f0" : "" }}
+                onClick={() =>
+                  this.props.Reaction(
+                    {
+                      type: 1,
+                      post_id: 0,
+                      comment_id: comment.id,
+                    },
+                    this.props.postId
+                  )
+                }
+                className="mr-75"
+              >
+                <ThumbsUp size={15} className="mr-25" />
+                {comment.likes}
+              </span>
+              <span
+                className="mr-50"
+                style={{ color: comment.user_reaction === 0 ? "#7367f0" : "" }}
+                onClick={() => {
+                  this.props.Reaction(
+                    {
+                      type: 0,
+                      post_id: 0,
+                      comment_id: comment.id,
+                    },
+                    this.props.postId
+                  );
+                }}
+              >
+                <ThumbsDown className="mr-25" size={15} />
+                {comment.dislikes}
+              </span>
             </div>
           </div>
         ))
@@ -167,7 +167,6 @@ class CommentList extends React.Component {
             this.props.addNewComment(this.state.newComment);
             this.setState({
               newComment: {
-                author: authorID,
                 post_id: this.props.postId,
                 content: "",
               },

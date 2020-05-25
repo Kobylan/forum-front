@@ -9,6 +9,7 @@ import { MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
 import { GetCategories } from "./GetCategories";
 import CommentList from "./Comments/CommentList";
 import ReactHtmlParser from "react-html-parser";
+import { getTime } from "./components/getTime";
 
 class Posts extends React.Component {
   static getDerivedStateFromProps(props, state) {
@@ -57,8 +58,9 @@ class Posts extends React.Component {
 
           <div className="d-flex justify-content-start align-items-center mb-1">
             <div className="d-flex align-items-center">
-              <a
-                className="pr-2"
+              <span
+                style={{ color: topic.user_reaction === 1 ? "#7367f0" : "" }}
+                className="mr-2 cursor-pointer"
                 onClick={(e) =>
                   this.props.Reaction({
                     author_id: 1,
@@ -69,8 +71,10 @@ class Posts extends React.Component {
                 }
               >
                 <ThumbsUp size={15} className="" /> {topic.likes}
-              </a>
-              <a
+              </span>
+              <span
+                style={{ color: topic.user_reaction === 0 ? "#7367f0" : "" }}
+                className={"cursor-pointer"}
                 onClick={(e) => {
                   this.props.Reaction({
                     author_id: 1,
@@ -81,11 +85,11 @@ class Posts extends React.Component {
                 }}
               >
                 <ThumbsDown size={15} /> {topic.dislikes}
-              </a>
+              </span>
             </div>
-            <p className="ml-auto">
+            <span className="ml-auto">
               <MessageSquare size={15} /> {topic.comments}
-            </p>
+            </span>
           </div>
           <CommentList postId={topic.id} />
         </CardBody>
@@ -102,30 +106,3 @@ export default connect(mapStateToProps, {
   getTopic,
   Reaction,
 })(Posts);
-
-const getTime = (unix) => {
-  var a = new Date(unix * 1000);
-  var months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  var year = a.getFullYear();
-  var month = months[a.getMonth()];
-  var date = a.getDate();
-  var hour = a.getHours();
-  var min = a.getMinutes();
-  var sec = a.getSeconds();
-  var time =
-    date + " " + month + " " + year + " " + hour + ":" + min + ":" + sec;
-  return time;
-};

@@ -172,7 +172,6 @@ const sweetAlert = lazy(() => import("./extensions/sweet-alert/SweetAlert"));
 const rcSlider = lazy(() => import("./extensions/rc-slider/Slider"));
 const uploader = lazy(() => import("./extensions/dropzone/Dropzone"));
 const editor = lazy(() => import("./extensions/editor/Editor"));
-const drop = lazy(() => import("./extensions/drag-and-drop/DragAndDrop"));
 const tour = lazy(() => import("./extensions/tour/Tour"));
 const clipboard = lazy(() =>
   import("./extensions/copy-to-clipboard/CopyToClipboard")
@@ -334,7 +333,7 @@ class AppRouter extends React.Component {
           <AppRoute path="/tables/reactstrap" component={tables} />
           <AppRoute path="/tables/react-tables" component={ReactTables} />
           <AppRoute path="/tables/agGrid" component={Aggrid} />
-          <AppRoute path="/pages/profile" component={profile} />
+          <AppRoute path="/profile" component={profile} />
           <AppRoute path="/pages/faq" component={faq} />
           <AppRoute
             path="/pages/knowledge-base"
@@ -402,7 +401,6 @@ class AppRouter extends React.Component {
           <AppRoute path="/extensions/slider" component={rcSlider} />
           <AppRoute path="/extensions/file-uploader" component={uploader} />
           <AppRoute path="/extensions/wysiwyg-editor" component={editor} />
-          <AppRoute path="/extensions/drag-and-drop" component={drop} />
           <AppRoute path="/extensions/tour" component={tour} />
           <AppRoute path="/extensions/clipboard" component={clipboard} />
           <AppRoute path="/extensions/context-menu" component={menu} />

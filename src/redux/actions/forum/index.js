@@ -10,7 +10,6 @@ export const getTopics = (routeParams) => {
         params: routeParams,
       })
       .then((result) => {
-        console.log("result", result);
         dispatch({
           type: "GET_TOPICS",
           topics: result.data.reverse(),
@@ -25,7 +24,6 @@ export const getTopic = (id) => {
     await axios
       .get(`${API_URI}/api/post?id=${id}`)
       .then((result) => {
-        console.log("result", result);
         dispatch({
           type: "GET_TOPIC",
           topic: result.data,
@@ -35,11 +33,36 @@ export const getTopic = (id) => {
       .catch((err) => console.log("ERROR", err));
   };
 };
+export const getMyTopics = () => {
+  return async (dispatch) => {
+    await axios
+      .get(`${API_URI}/api/posts?liked=0&created=1`)
+      .then((result) => {
+        dispatch({
+          type: "GET_MY_TOPICS",
+          topics: result.data,
+        });
+      })
+      .catch((err) => console.log("ERROR", err));
+  };
+};
+export const getLikedTopics = () => {
+  return async (dispatch) => {
+    await axios
+      .get(`${API_URI}/api/posts?liked=1&created=0`)
+      .then((result) => {
+        dispatch({
+          type: "GET_LIKED_TOPICS",
+          topics: result.data,
+        });
+      })
+      .catch((err) => console.log("ERROR", err));
+  };
+};
 
 export const addNewPost = (post) => {
   return (dispatch) => {
     axios.post(`${API_URI}/api/addpost`, post).then((response) => {
-      console.log(response);
       dispatch({ type: "ADD_POST", post });
     });
   };
