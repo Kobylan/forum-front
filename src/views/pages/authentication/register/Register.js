@@ -15,6 +15,8 @@ import {
 import RegisterJWT from "./RegisterJWT";
 import registerImg from "../../../../assets/img/pages/register.jpg";
 import "../../../../assets/scss/pages/authentication.scss";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 class Register extends React.Component {
   state = {
@@ -67,6 +69,7 @@ class Register extends React.Component {
             </Row>
           </Card>
         </Col>
+        <ToastContainer />
       </Row>
     );
   }

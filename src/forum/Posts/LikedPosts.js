@@ -1,10 +1,10 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import { Heart, MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
-import { getLikedTopics } from "../../../redux/actions/forum";
+import { getLikedTopics } from "../../redux/actions/forum";
 import { connect } from "react-redux";
 import TimeAgo from "react-timeago/lib";
-import { getTime } from "../../../forum/Posts/components/getTime";
+import { getTime } from "./components/getTime";
 import { Link } from "react-router-dom";
 
 class LikedPosts extends React.Component {
@@ -20,7 +20,9 @@ class LikedPosts extends React.Component {
   render() {
     return this.state.topics && this.state.topics.length !== 0 ? (
       this.state.topics.map((topic) => (
-        <Card>
+        <Card
+          className={"animated fadeInUp faster col-sm-12 col-md-8 offset-md-2"}
+        >
           <CardBody>
             <div className="d-flex justify-content-start align-items-center mb-1">
               <div className="user-page-info">

@@ -995,3 +995,10 @@ body {
     }
   }
 }
+.bb{
+  border-bottom: 1px solid ;
+}
+
+.bb:hover{
+  border-bottom-color: $primary !important;
+}

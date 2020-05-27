@@ -1,6 +1,7 @@
 import axios from "axios";
 import { history } from "../../../history";
 import { getComments } from "../comments";
+import { toast } from "react-toastify";
 
 const API_URI = "";
 export const getTopics = (routeParams) => {
@@ -38,6 +39,19 @@ export const getMyTopics = () => {
     await axios
       .get(`${API_URI}/api/posts?liked=0&created=1`)
       .then((result) => {
+        if (result.data.status === "Unathorized") {
+          toast.error(result.data.desciption, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            pauseOnHover: true,
+            progress: undefined,
+          });
+          history.push("/login");
+          return;
+        }
         dispatch({
           type: "GET_MY_TOPICS",
           topics: result.data,
@@ -51,6 +65,19 @@ export const getLikedTopics = () => {
     await axios
       .get(`${API_URI}/api/posts?liked=1&created=0`)
       .then((result) => {
+        if (result.data.status === "Unathorized") {
+          toast.error(result.data.desciption, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            pauseOnHover: true,
+            progress: undefined,
+          });
+          history.push("/login");
+          return;
+        }
         dispatch({
           type: "GET_LIKED_TOPICS",
           topics: result.data,

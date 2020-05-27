@@ -29,6 +29,7 @@ import unlink from "../../assets/svgIconsToolbar/unlink.svg";
 import undo from "../../assets/svgIconsToolbar/undo.svg";
 import redo from "../../assets/svgIconsToolbar/redo.svg";
 import code from "../../assets/svgIconsToolbar/code.svg";
+import { history } from "../../history";
 
 class AddPost extends Component {
   state = {
@@ -113,6 +114,7 @@ class AddPost extends Component {
       categories_id: categories,
     };
     this.props.addNewPost(NewPost);
+    history.push("/");
   };
 
   render() {
@@ -209,7 +211,7 @@ class AddPost extends Component {
           className={"animated fadeInUp faster col-sm-12 col-md-3 offset-md-7"}
           onClick={this.Submit}
         >
-          Review your question
+          Post your question
         </Button>
 
         <ToastContainer />

@@ -18,16 +18,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 class Login extends React.Component {
-  state = {
-    activeTab: "1",
-  };
-  toggle = (tab) => {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab,
-      });
-    }
-  };
   render() {
     return (
       <Row className="m-0 justify-content-center">
@@ -56,11 +46,7 @@ class Login extends React.Component {
                   <p className="px-2 auth-title">
                     Welcome back, please login to your account.
                   </p>
-                  <TabContent activeTab={this.state.activeTab}>
-                    <TabPane tabId="1">
-                      <LoginJWT />
-                    </TabPane>
-                  </TabContent>
+                  <LoginJWT />
                 </Card>
               </Col>
             </Row>

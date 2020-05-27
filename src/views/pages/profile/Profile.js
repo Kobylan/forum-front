@@ -1,9 +1,9 @@
 import React from "react";
 import { Row, Col } from "reactstrap";
-import MyPosts from "./MyPosts";
+import MyPosts from "../../../forum/Posts/MyPosts";
 
 import "../../../assets/scss/pages/users-profile.scss";
-import LikedPosts from "./LikedPosts";
+import LikedPosts from "../../../forum/Posts/LikedPosts";
 
 class Profile extends React.Component {
   render() {

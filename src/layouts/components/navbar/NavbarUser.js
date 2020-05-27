@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { history } from "../../../history";
 import { deleteAllCookies, getCookie } from "../../../cookie";
-import { LogIn, LogOut } from "react-feather";
+import { LogIn, LogOut, PlusCircle } from "react-feather";
 
 const NavbarUser = () => {
   const [cookie, setCookie] = useState(0);
@@ -23,15 +23,27 @@ const NavbarUser = () => {
           <span>Login</span>
         </div>
       ) : (
-        <div
-          onClick={(e) => {
-            deleteAllCookies();
-            setCookie(undefined);
-            history.push("/login");
-          }}
-        >
-          <LogOut size={14} className="mr-50" />
-          <span>Logout</span>
+        <div>
+          <span
+            className="mr-2 pb-1 bb link"
+            onClick={() => {
+              history.push("/add");
+            }}
+          >
+            <PlusCircle size={14} className="mr-50" />
+            <span>Ask question</span>
+          </span>
+          <span
+            className={"mr-2 pb-1 bb link"}
+            onClick={(e) => {
+              deleteAllCookies();
+              setCookie(undefined);
+              history.push("/login");
+            }}
+          >
+            <LogOut size={14} className="mr-50" />
+            <span>Logout</span>
+          </span>
         </div>
       )}
     </a>

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { logoutWithJWT } from "../../../redux/actions/auth/loginActions";
 import NavbarUser from "./NavbarUser";
+import { history } from "../../../history";
 
 const ThemeNavbar = (props) => {
   const colorsArr = ["primary", "danger", "success", "info", "warning", "dark"];
@@ -51,7 +52,12 @@ const ThemeNavbar = (props) => {
               {props.horizontal ? (
                 <div className="logo d-flex align-items-center">
                   {/*<div className="brand-logo mr-50"></div>*/}
-                  <h2 className="text-primary brand-text mb-0">forum.alem</h2>
+                  <h2
+                    onClick={() => history.push("/")}
+                    className="text-primary brand-text mb-0 cursor-pointer"
+                  >
+                    forum.alem
+                  </h2>
                 </div>
               ) : null}
               <NavbarUser

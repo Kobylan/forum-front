@@ -7,10 +7,10 @@ import {
   ThumbsDown,
   ThumbsUp,
 } from "react-feather";
-import { getMyTopics } from "../../../redux/actions/forum";
+import { getMyTopics } from "../../redux/actions/forum";
 import { connect } from "react-redux";
 import TimeAgo from "react-timeago/lib";
-import { getTime } from "../../../forum/Posts/components/getTime";
+import { getTime } from "./components/getTime";
 import { Link } from "react-router-dom";
 
 class MyPosts extends React.Component {
@@ -26,8 +26,9 @@ class MyPosts extends React.Component {
   render() {
     return this.state.topics && this.state.topics.length !== 0 ? (
       this.state.topics.map((topic) => (
-        <Card>
-          {console.log("=", topic)}
+        <Card
+          className={"animated fadeInUp faster col-sm-12 col-md-8 offset-md-2"}
+        >
           <CardBody>
             <div className="d-flex justify-content-start align-items-center mb-1">
               <div className="user-page-info">

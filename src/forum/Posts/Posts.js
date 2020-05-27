@@ -11,12 +11,11 @@ import { connect } from "react-redux";
 import { getTopics } from "../../redux/actions/forum/index";
 import TimeAgo from "react-timeago/lib";
 import { GetCategories } from "./GetCategories";
-import "animate.css";
 import "../../assets/scss/pages/posts.scss";
 import { MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
-import { Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import { getTime } from "./components/getTime";
+import { history } from "../../history";
 
 class Posts extends React.Component {
   static getDerivedStateFromProps(props, state) {
@@ -66,9 +65,12 @@ class Posts extends React.Component {
                 </small>
               </CardHeader>
               <CardHeader>
-                <Link to={"/post/" + topic.id}>
-                  <CardTitle>{topic.title}</CardTitle>
-                </Link>
+                <CardTitle
+                  onClick={() => history.push("/post/" + topic.id)}
+                  className={"cursor-pointer overflow-ellipsis"}
+                >
+                  {topic.title}
+                </CardTitle>
               </CardHeader>
               <CardBody>{ReactHtmlParser(topic.content)}</CardBody>
             </div>
@@ -77,21 +79,33 @@ class Posts extends React.Component {
                 className="m-0 position-relative"
                 style={{ top: "50%", transform: "translateY(-50%)" }}
               >
-                <NavItem>
-                  <NavLink style={{ cursor: "default" }}>
-                    <MessageSquare size={15} /> {topic.comments}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink style={{ cursor: "default" }}>
+                <li>
+                  <div
+                    style={{
+                      cursor: "default",
+                      padding: "1rem 0.5rem",
+                      color: topic.user_reaction === 1 ? "#7367f0" : "",
+                    }}
+                  >
                     <ThumbsUp size={15} /> {topic.likes}
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink style={{ cursor: "default" }}>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    style={{
+                      cursor: "default",
+                      padding: "1rem 0.5rem",
+                      color: topic.user_reaction === 0 ? "#7367f0" : "",
+                    }}
+                  >
                     <ThumbsDown size={15} /> {topic.dislikes}
-                  </NavLink>
-                </NavItem>
+                  </div>
+                </li>
+                <li>
+                  <div style={{ cursor: "default", padding: "1rem 0.5rem" }}>
+                    <MessageSquare size={15} /> {topic.comments}
+                  </div>
+                </li>
               </div>
             </div>
           </Card>

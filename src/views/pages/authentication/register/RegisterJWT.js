@@ -10,7 +10,7 @@ class RegisterJWT extends React.Component {
   state = {
     email: "",
     password: "",
-    name: "",
+    nickname: "",
     confirmPass: "",
   };
 
@@ -19,7 +19,7 @@ class RegisterJWT extends React.Component {
     this.props.signupWithJWT(
       this.state.email,
       this.state.password,
-      this.state.name
+      this.state.nickname
     );
   };
 
@@ -29,12 +29,12 @@ class RegisterJWT extends React.Component {
         <FormGroup className="form-label-group">
           <Input
             type="text"
-            placeholder="Name"
+            placeholder="Nickname"
             required
-            value={this.state.name}
-            onChange={(e) => this.setState({ name: e.target.value })}
+            value={this.state.nickname}
+            onChange={(e) => this.setState({ nickname: e.target.value })}
           />
-          <Label>Name</Label>
+          <Label>Nickname</Label>
         </FormGroup>
         <FormGroup className="form-label-group">
           <Input
@@ -65,14 +65,6 @@ class RegisterJWT extends React.Component {
             onChange={(e) => this.setState({ confirmPass: e.target.value })}
           />
           <Label>Confirm Password</Label>
-        </FormGroup>
-        <FormGroup>
-          <Checkbox
-            color="primary"
-            icon={<Check className="vx-icon" size={16} />}
-            label=" I accept the terms & conditions."
-            defaultChecked={true}
-          />
         </FormGroup>
         <div className="d-flex justify-content-between">
           <Button.Ripple

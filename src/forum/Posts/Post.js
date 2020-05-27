@@ -51,7 +51,9 @@ class Posts extends React.Component {
           </small>
         </CardHeader>
         <CardHeader>
-          <CardTitle>{topic.title}</CardTitle>
+          <CardTitle className={"cursor-pointer title"}>
+            {topic.title}
+          </CardTitle>
         </CardHeader>
         <CardBody>
           {ReactHtmlParser(topic.content)}

@@ -12,6 +12,8 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 // Route-based code splitting
 //**----------------------------------------------------------------------------------------------------------------------------------------------------**//
 const Posts = lazy(() => import("./forum/Posts/Posts"));
+const MyPosts = lazy(() => import("./forum/Posts/MyPosts"));
+const LikedPosts = lazy(() => import("./forum/Posts/LikedPosts"));
 const Post = lazy(() => import("./forum/Posts/Post"));
 const AddPost = lazy(() => import("./forum/Posts/AddPost"));
 //**----------------------------------------------------------------------------------------------------------------------------------------------------**//
@@ -244,6 +246,8 @@ class AppRouter extends React.Component {
         <Switch>
           {/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
           <AppRoute path="/" exact component={Posts} />
+          <AppRoute path="/my-posts" exact component={MyPosts} />
+          <AppRoute path="/liked-posts" exact component={LikedPosts} />
           <AppRoute path="/post/:id" exact component={Post} />
           <AppRoute path="/add" exact component={AddPost} />
           {/*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
