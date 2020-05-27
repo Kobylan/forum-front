@@ -18,9 +18,8 @@ import { convertToRaw, EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../../../assets/scss/plugins/extensions/editor.scss";
 import draftToHtml from "draftjs-to-html";
-import { Heart, MessageSquare, ThumbsDown, ThumbsUp } from "react-feather";
+import { ThumbsDown, ThumbsUp } from "react-feather";
 import { Reaction } from "../../../redux/actions/forum/index";
-import person7 from "../../../assets/img/portrait/small/avatar-s-7.jpg";
 import ReactHtmlParser from "react-html-parser";
 
 class CommentList extends React.Component {
@@ -30,7 +29,6 @@ class CommentList extends React.Component {
         comments: props.comments.comments.comments,
       };
     }
-    // Return null if the state hasn't changed
     return null;
   }
   state = {
@@ -160,7 +158,7 @@ class CommentList extends React.Component {
             onEditorStateChange={this.onEditorStateChange}
           />
         </fieldset>
-        <Button.Ripple
+        <Button
           size="sm"
           color="primary"
           onClick={() => {
@@ -178,7 +176,7 @@ class CommentList extends React.Component {
           }
         >
           Post Comment
-        </Button.Ripple>
+        </Button>
       </React.Fragment>
     );
   }

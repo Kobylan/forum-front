@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import { Card, CardBody, CardHeader, CardTitle } from "reactstrap";
 import { connect } from "react-redux";
 import { getTopics } from "../../redux/actions/forum/index";
 import TimeAgo from "react-timeago/lib";
@@ -46,6 +39,7 @@ class Posts extends React.Component {
       topicsArr.map((topic, i) => {
         return (
           <Card
+            key={i}
             className={
               "animated fadeInUp faster col-sm-12 col-md-8 offset-md-2"
             }

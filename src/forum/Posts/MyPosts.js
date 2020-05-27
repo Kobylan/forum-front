@@ -1,12 +1,6 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-import {
-  Heart,
-  MessageSquare,
-  PenTool,
-  ThumbsDown,
-  ThumbsUp,
-} from "react-feather";
+import { MessageSquare, PenTool, ThumbsDown, ThumbsUp } from "react-feather";
 import { getMyTopics } from "../../redux/actions/forum";
 import { connect } from "react-redux";
 import TimeAgo from "react-timeago/lib";

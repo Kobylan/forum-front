@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import classnames from "classnames";
-import Customizer from "../components/@vuexy/customizer/Customizer";
 import Sidebar from "./components/menu/horizontal-menu/HorizontalMenu";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
@@ -216,24 +215,7 @@ class HorizontalLayout extends PureComponent {
           footerType={customizerProps.footerType}
           hideScrollToTop={customizerProps.hideScrollToTop}
         />
-        {customizerProps.disableCustomizer !== true ? (
-          <Customizer
-            scrollToTop={customizerProps.hideScrollToTop}
-            activeNavbar={customizerProps.navbarColor}
-            activeMode={customizerProps.theme}
-            navbarType={customizerProps.navbarType}
-            footerType={customizerProps.footerType}
-            menuTheme={customizerProps.menuTheme}
-            customizerState={this.state.customizer}
-            handleCustomizer={this.handleCustomizer}
-            changeNavbar={this.props.changeNavbarColor}
-            changeNavbarType={this.props.changeNavbarType}
-            changeFooterType={this.props.changeFooterType}
-            changeMenuTheme={this.props.changeMenuColor}
-            hideScrollToTop={this.props.hideScrollToTop}
-            changeMode={this.props.changeMode}
-          />
-        ) : null}
+
         <div
           className="sidenav-overlay"
           onClick={this.handleSidebarVisibility}

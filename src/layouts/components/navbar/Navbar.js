@@ -1,8 +1,6 @@
 import React from "react";
 import { Navbar } from "reactstrap";
-import { connect } from "react-redux";
 import classnames from "classnames";
-import { logoutWithJWT } from "../../../redux/actions/auth/loginActions";
 import NavbarUser from "./NavbarUser";
 import { history } from "../../../history";
 
@@ -77,12 +75,4 @@ const ThemeNavbar = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.auth,
-  };
-};
-
-export default connect(mapStateToProps, {
-  logoutWithJWT,
-})(ThemeNavbar);
+export default ThemeNavbar;

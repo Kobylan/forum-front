@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 import classnames from "classnames";
-import Customizer from "../components/@vuexy/customizer/Customizer";
 import Sidebar from "./components/menu/vertical-menu/Sidebar";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
@@ -227,24 +226,6 @@ class VerticalLayout extends PureComponent {
       hideScrollToTop: appProps.hideScrollToTop,
     };
 
-    let customizerProps = {
-      customizerState: this.state.customizer,
-      handleCustomizer: this.handleCustomizer,
-      changeMode: this.props.changeMode,
-      changeNavbar: this.props.changeNavbarColor,
-      changeNavbarType: this.props.changeNavbarType,
-      changeFooterType: this.props.changeFooterType,
-      changeMenuTheme: this.props.changeMenuColor,
-      collapseSidebar: this.props.collapseSidebar,
-      hideScrollToTop: this.props.hideScrollToTop,
-      activeMode: appProps.theme,
-      activeNavbar: appProps.navbarColor,
-      navbarType: appProps.navbarType,
-      footerType: appProps.footerType,
-      menuTheme: appProps.menuTheme,
-      scrollToTop: appProps.hideScrollToTop,
-      sidebarState: appProps.sidebarCollapsed,
-    };
     return (
       <div
         className={classnames(
@@ -273,9 +254,7 @@ class VerticalLayout extends PureComponent {
         </div>
 
         <Footer {...footerProps} />
-        {appProps.disableCustomizer !== true ? (
-          <Customizer {...customizerProps} />
-        ) : null}
+
         <div
           className="sidenav-overlay"
           onClick={this.handleSidebarVisibility}

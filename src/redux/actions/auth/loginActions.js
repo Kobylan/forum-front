@@ -1,7 +1,6 @@
 import { history } from "../../../history";
 import axios from "axios";
 import { toast } from "react-toastify";
-import React from "react";
 
 const API_URI = "";
 export const loginWithJWT = (user) => {

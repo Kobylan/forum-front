@@ -12,16 +12,17 @@ const NavbarUser = () => {
     setCookie(getCookie("logged-in_forum"));
   }
   return (
-    <a tag="a" className="nav-link ">
+    <span tag="a" className="nav-link cursor-pointer">
       {cookie === undefined ? (
-        <div
+        <span
+          className="mr-2 pb-1 bb link"
           onClick={(e) => {
             history.push("/login");
           }}
         >
           <LogIn size={14} className="mr-50" />
           <span>Login</span>
-        </div>
+        </span>
       ) : (
         <div>
           <span
@@ -34,7 +35,7 @@ const NavbarUser = () => {
             <span>Ask question</span>
           </span>
           <span
-            className={"mr-2 pb-1 bb link"}
+            className="mr-2 pb-1 bb link"
             onClick={(e) => {
               deleteAllCookies();
               setCookie(undefined);
@@ -46,7 +47,7 @@ const NavbarUser = () => {
           </span>
         </div>
       )}
-    </a>
+    </span>
   );
 };
 export default NavbarUser;
