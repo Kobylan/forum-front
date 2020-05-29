@@ -67,9 +67,9 @@ class CommentList extends React.Component {
             key={i}
             className="d-flex justify-content-start align-items-center mb-1"
           >
-            <div className="comment-info col-sm-10 pl-1">
+            <div className="comment-info col-sm-10 pl-1 ">
               <h6 className="mb-1 ">{comment.author.nickname}</h6>
-              <span className="font-small-2">
+              <span className="font-small-2 ">
                 {ReactHtmlParser(comment.content)}
               </span>
             </div>

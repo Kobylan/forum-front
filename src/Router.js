@@ -12,6 +12,13 @@ const Post = lazy(() => import("./forum/Posts/Post"));
 const AddPost = lazy(() => import("./forum/Posts/AddPost"));
 const Login = lazy(() => import("./authentication/login/Login"));
 const Register = lazy(() => import("./authentication/register/Register"));
+const Angular = lazy(() => import("./forum/Posts/Catergory/Angular"));
+const Reactimus = lazy(() => import("./forum/Posts/Catergory/Reactimus"));
+const Vue = lazy(() => import("./forum/Posts/Catergory/Vue"));
+const Ember = lazy(() => import("./forum/Posts/Catergory/Ember"));
+const jQuery = lazy(() => import("./forum/Posts/Catergory/jQuery"));
+const Backbone = lazy(() => import("./forum/Posts/Catergory/Backbone"));
+const NotFound = lazy(() => import("./404"));
 
 // Set Layout and Component Using App Route
 const RouteConfig = ({
@@ -62,6 +69,13 @@ class AppRouter extends React.Component {
           <AppRoute path="/add" exact component={AddPost} />
           <AppRoute path="/login" exact component={Login} />
           <AppRoute path="/register" exact component={Register} />
+          <AppRoute path="/Angular" component={Angular} />
+          <AppRoute path="/React" component={Reactimus} />
+          <AppRoute path="/Vue" component={Vue} />
+          <AppRoute path="/Ember" component={Ember} />
+          <AppRoute path="/jQuery" component={jQuery} />
+          <AppRoute path="/Backbone" component={Backbone} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     );

@@ -14,6 +14,12 @@ const forum = (state = initialState, action) => {
         topics: action.topics,
         routeParam: action.routeParams,
       };
+    case "GET_TOPIC_BY_CATEGORY":
+      return {
+        ...state,
+        topics: action.topics,
+        routeParam: action.routeParams,
+      };
     case "GET_MY_TOPICS":
       return {
         ...state,

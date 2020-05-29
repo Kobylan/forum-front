@@ -11,6 +11,7 @@ const NavbarUser = () => {
   if (cookie === 0) {
     setCookie(getCookie("logged-in_forum"));
   }
+  console.log(cookie);
   return (
     <span tag="a" className="nav-link cursor-pointer">
       {cookie === undefined ? (

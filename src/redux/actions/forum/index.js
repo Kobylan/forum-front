@@ -20,6 +20,20 @@ export const getTopics = (routeParams) => {
       .catch((err) => console.log(err));
   };
 };
+export const getTopicByCategory = (routeParams) => {
+  return async (dispatch) => {
+    await axios
+      .get(`${API_URI}/api/postsby?category=${routeParams}`)
+      .then((result) => {
+        dispatch({
+          type: "GET_TOPIC_BY_CATEGORY",
+          topics: result.data.reverse(),
+          routeParams,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+};
 export const getTopic = (id) => {
   return async (dispatch) => {
     await axios

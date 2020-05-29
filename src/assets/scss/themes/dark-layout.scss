@@ -100,12 +100,14 @@ body {
 
     // main navbar and header navbar shadow(generic navbar)
     .header-navbar-shadow {
-      background: linear-gradient(
-        180deg,
-        rgba(44, 48, 60, 0.9) 44%,
-        rgba(44, 48, 60, 0.43) 73%,
-        rgba(17, 30, 70, 0)
-      );
+      //background: linear-gradient(
+      //  180deg,
+      //  rgba(44, 48, 60, 0.9) 44%,
+      //  rgba(44, 48, 60, 0.43) 73%,
+      //  rgba(17, 30, 70, 0)
+      //);
+      background: #262c49;
+      opacity: 0.5;
     }
     .header-navbar {
       background-color: $dark-card-color;

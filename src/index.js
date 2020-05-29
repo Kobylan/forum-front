@@ -12,7 +12,6 @@ const LazyApp = lazy(() => import("./App"));
 ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={""}>
-      }>
       <Layout>
         <LazyApp />
       </Layout>

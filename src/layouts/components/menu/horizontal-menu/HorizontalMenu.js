@@ -22,6 +22,7 @@ class HorizontalSidebar extends React.Component {
       itemHover: null,
       parentHover: null,
       activeChildUrl: null,
+      location: window.location.pathname,
     };
     this.activeFlag = false;
     this.parentItems = [];
@@ -163,9 +164,7 @@ class HorizontalSidebar extends React.Component {
                       ? child.navLink
                       : "#"
                   }
-                  href={
-                    child.type === "external-link" ? child.navLink : undefined
-                  }
+                  onClick={() => history.push(child.navLink)}
                   target={child.newTab ? "_blank" : undefined}
                   onMouseEnter={() => this.handleItemHover(child.id)}
                   onMouseLeave={() => this.handleItemHover(null)}
@@ -231,11 +230,13 @@ class HorizontalSidebar extends React.Component {
   };
 
   renderDropdown = (arr) => {
+    console.log("====", history.location.pathname);
     return arr.map((item) => {
       if (
         item.type === "item" &&
         item.navLink &&
-        item.navLink === this.props.activePath
+        (item.navLink === this.props.activePath ||
+          item.navLink === history.location.pathname)
       ) {
         this.activeFlag = true;
         this.updateParentItems(item.id, true);
