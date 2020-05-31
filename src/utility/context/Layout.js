@@ -1,10 +1,9 @@
 import React from "react";
-import VerticalLayout from "../../layouts/VerticalLayout";
 import FullLayout from "../../layouts/FullpageLayout";
 import HorizontalLayout from "../../layouts/HorizontalLayout";
 import themeConfig from "../../configs/themeConfig";
 const layouts = {
-  vertical: VerticalLayout,
+  vertical: HorizontalLayout,
   full: FullLayout,
   horizontal: HorizontalLayout,
 };

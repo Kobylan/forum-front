@@ -1,7 +1,5 @@
 import React from "react";
-import ScrollToTop from "react-scroll-up";
-import { Button } from "reactstrap";
-import { ArrowUp, Heart } from "react-feather";
+import { Heart } from "react-feather";
 import classnames from "classnames";
 
 const Footer = (props) => {
@@ -40,13 +38,6 @@ const Footer = (props) => {
           <Heart className="text-danger" size={15} />
         </span>
       </p>
-      {props.hideScrollToTop === false ? (
-        <ScrollToTop showUnder={160}>
-          <Button color="primary" className="btn-icon scroll-top">
-            <ArrowUp size={15} />
-          </Button>
-        </ScrollToTop>
-      ) : null}
     </footer>
   );
 };

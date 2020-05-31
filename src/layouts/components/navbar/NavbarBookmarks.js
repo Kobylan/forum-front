@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   NavItem,
   NavLink,
@@ -6,15 +6,14 @@ import {
   UncontrolledDropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownToggle
-} from "reactstrap"
-import * as Icon from "react-feather"
-import { Link } from "react-router-dom"
-import classnames from "classnames"
-import AutoComplete from "../../../components/@vuexy/autoComplete/AutoCompleteComponent"
-import { history } from "../../../history"
-import { connect } from "react-redux"
-
+  DropdownToggle,
+} from "reactstrap";
+import * as Icon from "react-feather";
+import { Link } from "react-router-dom";
+import classnames from "classnames";
+import AutoComplete from "../../../components/@vuexy/autoComplete/AutoCompleteComponent";
+import { history } from "../../../history";
+import { connect } from "react-redux";
 
 class NavbarBookmarks extends React.PureComponent {
   state = {
@@ -22,8 +21,8 @@ class NavbarBookmarks extends React.PureComponent {
     value: "",
     noSuggestions: false,
     isStarred: false,
-    suggestions: []
-  }
+    suggestions: [],
+  };
 
   handleBookmarksVisibility = () => {
     this.setState({
@@ -31,30 +30,30 @@ class NavbarBookmarks extends React.PureComponent {
       value: "",
       suggestions: [],
       noSuggestions: false,
-      starred: null
-    })
-  }
+      starred: null,
+    });
+  };
 
   componentDidUpdate() {
-    this.props.handleAppOverlay(this.state.value)
+    this.props.handleAppOverlay(this.state.value);
   }
 
   componentDidMount() {
     let {
       bookmarks: { suggestions },
-      loadSuggestions
-    } = this.props
+      loadSuggestions,
+    } = this.props;
     this.setState(
       {
-        suggestions: suggestions
+        suggestions: suggestions,
       },
       loadSuggestions()
-    )
+    );
   }
 
   renderBookmarks = () => {
-    return this.props.bookmarks.starred.map(item => {
-      const IconTag = Icon[item.icon ? item.icon : "X"]
+    return this.props.bookmarks.starred.map((item) => {
+      const IconTag = Icon[item.icon ? item.icon : "X"];
       return (
         <React.Fragment key={item.id}>
           <NavItem className="nav-item d-none d-lg-block">
@@ -71,30 +70,30 @@ class NavbarBookmarks extends React.PureComponent {
             </UncontrolledTooltip>
           </NavItem>
         </React.Fragment>
-      )
-    })
-  }
+      );
+    });
+  };
 
   render() {
     let {
       bookmarks: { extraStarred, suggestions },
       sidebarVisibility,
       updateStarred,
-      handleAppOverlay
-    } = this.props
+      handleAppOverlay,
+    } = this.props;
 
     const renderExtraStarred =
       extraStarred.length > 0
-        ? extraStarred.map(i => {
-            const IconTag = Icon[i.icon ? i.icon : null]
+        ? extraStarred.map((i) => {
+            const IconTag = Icon[i.icon ? i.icon : null];
             return (
               <DropdownItem key={i.id} href={i.link}>
                 <IconTag size={15} />
                 <span className="align-middle ml-1">{i.title}</span>
               </DropdownItem>
-            )
+            );
           })
-        : null
+        : null;
 
     return (
       <div className="mr-auto float-left bookmark-wrapper d-flex align-items-center">
@@ -131,7 +130,7 @@ class NavbarBookmarks extends React.PureComponent {
             </NavLink>
             <div
               className={classnames("bookmark-input search-input", {
-                show: this.state.showBookmarks
+                show: this.state.showBookmarks,
               })}
             >
               <div className="bookmark-input-icon">
@@ -146,14 +145,14 @@ class NavbarBookmarks extends React.PureComponent {
                 suggestionLimit={this.state.value.length ? 6 : 100}
                 clearInput={this.state.showBookmarks}
                 defaultSuggestions={true}
-                onChange={e => this.setState({ value : e.target.value })}
-                externalClick={e => this.setState({ showBookmarks : false })}
-                onKeyDown={e => {
+                onChange={(e) => this.setState({ value: e.target.value })}
+                externalClick={(e) => this.setState({ showBookmarks: false })}
+                onKeyDown={(e) => {
                   if (e.keyCode === 27 || e.keyCode === 13) {
                     this.setState({
-                      showBookmarks: false
-                    })
-                    handleAppOverlay("")
+                      showBookmarks: false,
+                    });
+                    handleAppOverlay("");
                   }
                 }}
                 customRender={(
@@ -165,7 +164,7 @@ class NavbarBookmarks extends React.PureComponent {
                   onSuggestionItemHover,
                   userInput
                 ) => {
-                  const IconTag = Icon[suggestion.icon ? suggestion.icon : "X"]
+                  const IconTag = Icon[suggestion.icon ? suggestion.icon : "X"];
                   if (userInput.length) {
                     return (
                       <li
@@ -174,13 +173,13 @@ class NavbarBookmarks extends React.PureComponent {
                           {
                             active:
                               filteredData.indexOf(suggestion) ===
-                              activeSuggestion
+                              activeSuggestion,
                           }
                         )}
                         key={suggestion.target}
-                        onClick={e => {
+                        onClick={(e) => {
                           if (!this.state.showBookmarks) {
-                            e.stopPropagation()
+                            e.stopPropagation();
                           }
                         }}
                       >
@@ -198,16 +197,16 @@ class NavbarBookmarks extends React.PureComponent {
                         </Link>
                         <Icon.Star
                           className={classnames({
-                            "text-warning": suggestion.starred === true
+                            "text-warning": suggestion.starred === true,
                           })}
                           size={17}
-                          onClick={e => {
-                            updateStarred(suggestion)
-                            e.stopPropagation()
+                          onClick={(e) => {
+                            updateStarred(suggestion);
+                            e.stopPropagation();
                           }}
                         />
                       </li>
-                    )
+                    );
                   } else {
                     return suggestion.starred === true ? (
                       <li
@@ -217,19 +216,21 @@ class NavbarBookmarks extends React.PureComponent {
                           {
                             active:
                               filteredData.indexOf(suggestion) ===
-                              activeSuggestion
+                              activeSuggestion,
                           }
                         )}
-                        onClick={e => {
+                        onClick={(e) => {
                           if (!this.state.showBookmarks) {
-                            e.stopPropagation()
+                            e.stopPropagation();
                           }
                         }}
                       >
                         <Link
                           to={suggestion.link}
                           className="component-info w-100"
-                          onClick={e => this.setState({ showBookmarks: false })}
+                          onClick={(e) =>
+                            this.setState({ showBookmarks: false })
+                          }
                         >
                           <IconTag size={15} />
                           <span className="align-middle ml-1">
@@ -238,21 +239,21 @@ class NavbarBookmarks extends React.PureComponent {
                         </Link>
                         <Icon.Star
                           className={classnames({
-                            "text-warning": suggestion.starred === true
+                            "text-warning": suggestion.starred === true,
                           })}
                           size={17}
-                          onClick={e => {
-                            updateStarred(suggestion)
-                            e.stopPropagation()
+                          onClick={(e) => {
+                            updateStarred(suggestion);
+                            e.stopPropagation();
                           }}
                         />
                       </li>
-                    ) : null
+                    ) : null;
                   }
                 }}
-                onSuggestionsShown={userInput => {
+                onSuggestionsShown={(userInput) => {
                   if (this.state.showBookmarks) {
-                    handleAppOverlay(userInput)
+                    handleAppOverlay(userInput);
                   }
                 }}
               />
@@ -260,15 +261,13 @@ class NavbarBookmarks extends React.PureComponent {
           </NavItem>
         </ul>
       </div>
-    )
+    );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    bookmarks: state.navbar
-  }
-}
+    bookmarks: state.navbar,
+  };
+};
 
-export default connect(mapStateToProps, null)(
-  NavbarBookmarks
-)
+export default connect(mapStateToProps, null)(NavbarBookmarks);
